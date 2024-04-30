@@ -1,0 +1,22 @@
+a{
+    padding: 8px 12px;
+    border-radius: 8px;
+    height: 40px;
+    box-sizing: border-box;
+    display: flex;
+    color: #aac4e1;
+    font-weight: bold;
+}
+a:hover{
+    background-color: #526484;
+    color: white;
+    text-decoration: none;
+}
+
+span{
+    align-self: center;
+}
+
+i{
+    margin-right: 8px;
+}

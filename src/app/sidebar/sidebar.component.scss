@@ -1,25 +1,42 @@
-[ctn] {
+#sidebar {
     height: 100vh;
-    width: 300px;
-    background-color: #03407f;
+    width: 290px;
+    background-color: #02274d;
     padding: 16px;
 }
 
+#sidebar-title {
+    height: 64px;
+    padding: 8px 16px;
+}
+
 [logo] {
-    height: 48px;
+    max-height: 100%;
     display: block;
 }
 
 [nav-header] {
     display: block;
     margin-top: 32px;
+    margin-left: 16px;
+    margin-right: 16px;
+    color: #aac4e1;
+    font-size: small;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-ul{
+ul {
     list-style-type: none;
-    padding: 0px;
+    padding: 10px;
 }
 
-.navigation-btn{
-
+#tabs {
+    overflow-y: auto;
+    height: calc(100vh - 64px - 16px);
+    padding-top: 40px;
+    padding-bottom: 100px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 }

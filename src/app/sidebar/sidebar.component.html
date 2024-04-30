@@ -1,18 +1,15 @@
-<div ctn>
-    <img src="https://candidature.uir.ac.ma/images/logo-uir.png" logo>
-    <a href="#" class="navigation-btn" nav-header>Tableau de bord</a>
-
-    <p nav-header>Candidature</p>
-    <ul>
-        <li><a href="#" class="navigation-btn">Mes programmes</a></li>
-        <li><a href="#" class="navigation-btn">Frais de concours</a></li>
-        <li><a href="#" class="navigation-btn">Choix & Convocations</a></li>
-        <li><a href="#" class="navigation-btn">Inscription</a></li>
-    </ul>
-
-    <p nav-header>Cursus</p>
-    <ul>
-        <li><a href="#" class="navigation-btn">Mon cursus</a></li>
-        <li><a href="#" class="navigation-btn">Profil</a></li>
-    </ul>
+<div id="sidebar" [style.display]="isVisible ? 'block' : 'none'">
+    <div id="sidebar-title">
+        <img src="https://candidature.uir.ac.ma/images/logo-uir.png" alt="" logo>
+    </div>
+    <div id="tabs">
+        <app-navlink [link]="dashboardLink" id="dashboardLink"></app-navlink>
+        
+        <div *ngFor="let group of linkGroup">
+            <p nav-header>{{group.title}}</p>
+            <ul>
+                <li *ngFor="let link of group.links"><app-navlink [link]="link" routerLinkActive=""></app-navlink></li>
+            </ul>
+        </div>
+    </div>
 </div>
