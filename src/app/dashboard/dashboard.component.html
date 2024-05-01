@@ -1,0 +1,103 @@
+<div class="">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Veuillez valider votre adresse e-mail en cliquant sur <a href="#">ce lien</a>. Un mail de vérification vous sera
+        envoyé
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col mb-2">
+            <button class="btn btn-lg btn-wider btn-success">Cursus</button>
+        </div>
+        <div class="col mb-2">
+            <button class="btn btn-lg btn-wider btn-success">Choix</button>
+        </div>
+        <div class="col mb-2">
+            <button class="btn btn-lg btn-wider btn-warning">Convocation</button>
+        </div>
+        <div class="col mb-2">
+            <button class="btn btn-lg btn-wider btn-block btn-warning">Admission</button>
+        </div>
+        <div class="col mb-2">
+            <button class="btn btn-lg btn-wider btn-block btn-warning">Préinscription</button>
+        </div>
+        <div class="col mb-2">
+            <button class="btn btn-lg btn-wider btn-block btn-warning">Inscription</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <img src="https://candidature.uir.ac.ma/images/slider.jpg" alt="" style="width: 100%;">
+        </div>
+        <div class="col-md-12 mb-4">
+            <div class="frame">
+                <div class="d-flex justify-content-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
+                        alt="" style="height: 80px;">
+                </div>
+                <p style="text-transform: uppercase; text-align: center; margin-top: 32px; margin-bottom: 0;">m.
+                    sulaiman mukhtar</p>
+                <p style="color: dodgerblue; text-align: center; margin: 0;">#2425-08882</p>
+                <div class="d-flex justify-content-between">
+                    <p>Création</p>
+                    <p>22-04-2024</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p>Téléphone</p>
+                    <p>0777052353</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p>E-mail</p>
+                    <p>sulmuk28&commat;gmail.com</p>
+                </div>
+                <a class="button" href="#"><span>Mon profil</span></a>
+            </div>
+        </div>
+        <div class="col-md-12 mb-4">
+            <div class="frame">
+                @for (item of stages; track $index) {
+                <div class="d-flex justify-content-between py-2">
+                    <div>
+                        <p class="fw-bold" style="margin: 0;">{{item.name}}</p>
+                        <p class="fw-light" style="margin: 0;">{{item.description}}</p>
+                    </div>
+                    <div class="align-self-center">
+                        @if (item.isComplete) {
+                        complete
+                        }@else {
+                        not complete
+                        }
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-12 mb-4">
+            <div class="frame" style="background-color: darkslateblue; color: white;">
+                <p>Choix de programmes</p>
+                <p>Faites votre choix à partir des programmes proposés par l'UIR.</p>
+                <button class="btn btn-secondary">Choisir</button>
+            </div>
+        </div>
+        <div class="col-md-12 mb-4">
+            <div class="frame" style="background-color: darkslateblue; color: white;">
+                <p>Paiement des frais de concours</p>
+                <p>750 DH pour 2 sessions, 1.500 DH pour un nombre illimité</p>
+                <button class="btn btn-secondary">Recharger votre compte</button>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <p>Mes sessions</p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Session</th>
+                        <th>Programme</th>
+                        <th>Etat</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

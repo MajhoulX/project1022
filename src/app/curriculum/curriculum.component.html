@@ -1,103 +1,132 @@
-<div class="">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Veuillez valider votre adresse e-mail en cliquant sur <a href="#">ce lien</a>. Un mail de vérification vous sera
-        envoyé
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-
-    <div class="row mb-2">
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-success">Cursus</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-success">Choix</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-warning">Convocation</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-block btn-warning">Admission</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-block btn-warning">Préinscription</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-block btn-warning">Inscription</button>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12 mb-4">
-            <img src="https://candidature.uir.ac.ma/images/slider.jpg" alt="" style="width: 100%;">
-        </div>
-        <div class="col-md-12 mb-4">
-            <div class="frame">
-                <div class="d-flex justify-content-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
-                        alt="" style="height: 80px;">
-                </div>
-                <p style="text-transform: uppercase; text-align: center; margin-top: 32px; margin-bottom: 0;">m.
-                    sulaiman mukhtar</p>
-                <p style="color: dodgerblue; text-align: center; margin: 0;">#2425-08882</p>
-                <div class="d-flex justify-content-between">
-                    <p>Création</p>
-                    <p>22-04-2024</p>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p>Téléphone</p>
-                    <p>0777052353</p>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p>E-mail</p>
-                    <p>sulmuk28&commat;gmail.com</p>
-                </div>
-                <a class="button" href="#"><span>Mon profil</span></a>
-            </div>
-        </div>
-        <div class="col-md-12 mb-4">
-            <div class="frame">
-                @for (item of stages; track $index) {
-                <div class="d-flex justify-content-between py-2">
-                    <div>
-                        <p class="fw-bold" style="margin: 0;">{{item.name}}</p>
-                        <p class="fw-light" style="margin: 0;">{{item.description}}</p>
-                    </div>
-                    <div class="align-self-center">
-                        @if (item.isComplete) {
-                        complete
-                        }@else {
-                        not complete
-                        }
-                    </div>
-                </div>
-                }
-            </div>
-        </div>
-        <div class="col-md-12 mb-4">
-            <div class="frame" style="background-color: darkslateblue; color: white;">
-                <p>Choix de programmes</p>
-                <p>Faites votre choix à partir des programmes proposés par l'UIR.</p>
-                <button class="btn btn-secondary">Choisir</button>
-            </div>
-        </div>
-        <div class="col-md-12 mb-4">
-            <div class="frame" style="background-color: darkslateblue; color: white;">
-                <p>Paiement des frais de concours</p>
-                <p>750 DH pour 2 sessions, 1.500 DH pour un nombre illimité</p>
-                <button class="btn btn-secondary">Recharger votre compte</button>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <p>Mes sessions</p>
+<div class="d-flex justify-content-between mb-3 align-items-center">
+    <p class="m-0">Mon cursus</p>
+    <a href="#"
+        style="background-color: rgb(77, 145, 122); display: flex; padding: 8px; text-decoration: none; color: white;">
+        <p class="m-0 align-self-center">Modifier mon cursus</p>
+    </a>
+</div>
+<div class="alert alert-info d-flex align-items-center" role="alert">
+    <p>Si vous avez opté pour <strong>un programme en <span ul>ingénierie</span> ou en <span
+                ul>architecture</span></strong>, merci de renseigner vos notes obtenues
+        respectivement à ceux mentionnés sur vos bulletins scolaires</p>
+</div>
+<div class="row">
+    <div class="col">
+        <div>
+            <p>Informations générales</p>
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>Session</th>
-                        <th>Programme</th>
-                        <th>Etat</th>
+                        <td>Nom complete</td>
+                        <td class="fw-bold" style="text-transform: uppercase;">{{user.civility}}. {{user.firstName}} {{user.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Code étudiant</td>
+                        <td class="fw-bold">{{user.id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Adresse Email</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Téléphone</td>
+                        <td>{{user.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>CIN</td>
+                        <td>{{user.cin}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date de naissance</td>
+                        <td>{{user.birthDate.toLocaleDateString()}}</td>
+                    </tr>
+                    <tr>
+                        <td>Nationalité</td>
+                        <td>{{user.nationality}}</td>
+                    </tr>
+                    <tr>
+                        <td>Résidence</td>
+                        <td>{{user.residentState}} - {{user.residentCountry}}</td>
+                    </tr>
+                    <tr>
+                        <td>Adresse</td>
+                        <td>{{user.address}}</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div>
+            <p>Baccalauréat</p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Système d'étude</td>
+                        <td>{{user.bacStudySystem}} | Massar: {{user.massar}}</td>
+                    </tr>
+                    <tr>
+                        <td>Série</td>
+                        <td>{{user.bacSerie}}</td>
+                    </tr>
+                    <tr>
+                        <td>Option</td>
+                        <td>{{user.bacOption}}</td>
+                    </tr>
+                    <tr>
+                        <td>Niveau d'études</td>
+                        <td>{{user.bacLevel}}</td>
+                    </tr>
+                    <tr>
+                        <td>Établissement</td>
+                        <td>{{user.bacInstitution}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-4">
+            <p>Notes de l'année terminale (2ème année du Bac)</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>MATIÈRES</th>
+                        <th>1ER SEMESTRE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Anglais</td>
+                        <td><input class="form-control" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>Mathématiques</td>
+                        <td><input class="form-control" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>Physique</td>
+                        <td><input class="form-control" type="number"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mb-4">
+            <p>Note de l’examen Régional</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>FRANÇAIS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class="form-control" type="number" title="" placeholder=""></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <button class="mb-4 btn btn-primary" style="width: 100%;">Enregistrer les modifications</button>
+            <em style="font-size: small;">Veuillez noter que l'Université Internationale de Rabat se réserve le droit d’annuler votre candidature ou, dans le cas de réussite au concours, votre demande d'inscription si les notes déclarées précédemment ne concordent pas avec celles de votre relevé de notes</em>
         </div>
     </div>
 </div>

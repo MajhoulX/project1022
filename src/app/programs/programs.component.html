@@ -8,10 +8,7 @@
         <p class="m-0 fw-bold">Liste des programmes</p>
         <p class="m-0" style="font-size: small;">Veuillez sélectionner la session</p>
     </div>
-    <div>
-        <button style="font-size: small; margin-right: 8px;">Solde: 0.00 DHs</button>
-        <a href="#" style="font-size: small;">Paiement des frais de concours</a>
-    </div>
+    <app-payment-balance [style.align-self]="'center'"></app-payment-balance>
 </div>
 <div class="row">
     @for (faculty of faculties; track $index) {

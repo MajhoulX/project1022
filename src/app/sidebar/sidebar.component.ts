@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { NavlinkComponent } from '../navlink/navlink.component';
 import { RouterLinkActive } from '@angular/router';
-import { Link, Links, links } from '../../models/link';
+import { Link, Links } from '../../models/link';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,7 +22,24 @@ export class SidebarComponent {
     displayText: "Tableau de bord",
     icon: ""
   }
-  linkGroup: Links[] = links;
+  linkGroup: Links[] = [
+    {
+        title: "Candidature",
+        links: [
+            { route: "dashboard/programmes", displayText: "Mes Programmes", isActive: false, icon: "" },
+            { route: "dashboard/frais", displayText: "Frais de concours", isActive: false, icon: "" },
+            { route: "dashboard/choix", displayText: "Choix & Convocations", isActive: false, icon: "" },
+            { route: "dashboard/inscription", displayText: "Inscription", isActive: false, icon: "" }
+        ]
+    },
+    {
+        title: "Cursus",
+        links: [
+            { route: "dashboard/cursus", displayText: "Mon cursus", isActive: false, icon: "" },
+            { route: "dashboard/profil", displayText: "Profil", isActive: false, icon: "" }
+        ]
+    }
+]
 
   toggle(){
     this._isVisible = !this.isVisible;
