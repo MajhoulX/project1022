@@ -1,0 +1,15 @@
+a.button {
+    background-color: azure;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: background-color 200ms ease-in-out, color 300ms ease-out;
+    color: dodgerblue;
+}
+
+a.button:hover {
+    background-color: #02274d;
+    color: white;
+}

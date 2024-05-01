@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Stage, stages } from '../../models/stage';
 import { CommonModule } from '@angular/common';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-curriculum',
@@ -11,4 +12,5 @@ import { CommonModule } from '@angular/common';
 })
 export class CurriculumComponent {
   stages:Stage[] = stages;
+  user:User = new User();
 }
