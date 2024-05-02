@@ -28,8 +28,16 @@
                         <td>Montant</td>
                     </tr>
                 </thead>
+                <tbody>
+                    @for (payment of payments; track $index) {
+                        <tr>
+                            <td>{{payment.date.toLocaleDateString()}}</td>
+                            <td>{{payment.amount}}</td>
+                        </tr>
+                    }
+                </tbody>
             </table>
-            <p class="text-center bg-primary mx-4 p-1">0.00 MAD</p>
+            <p class="text-center text-white bg-primary mx-4 p-1">{{getTotal()}} MAD</p>
         </div>
     </div>
 </div>
