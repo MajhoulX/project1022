@@ -8,6 +8,7 @@ export class User{
     phone:string = "0777052353";
     email:string = "khahas@gmail.com";
     cin:string = "J553295";
+    passportNumber:string = "J553295";
     nationality:string = "Marocaine";
     address:string = "n145 imm 9 Inbiaat 3";
     residentState:string = "Agadir";
