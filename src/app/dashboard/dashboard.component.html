@@ -90,12 +90,20 @@
         <div class="col-md-12">
             <p>Mes sessions</p>
             <table class="table">
-                <tbody>
+                <thead>
                     <tr>
                         <th>Session</th>
                         <th>Programme</th>
                         <th>Etat</th>
                     </tr>
+                </thead>
+                <tbody>
+                    @for (session of sessions; track $index) {
+                        <tr>
+                            <td>{{session.id}}</td>
+                            <td>{{session.status}}</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

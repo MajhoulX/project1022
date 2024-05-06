@@ -1,5 +1,5 @@
-import { Exam } from "./exam";
 import { Payment } from "./payment";
+import { UserExam } from "./userExam";
 
 export class User {
     id: string = "#2425-08882";
@@ -27,11 +27,12 @@ export class User {
     password: string = "noidkhalil";
     joined: Date = new Date();
     birthDate: Date = new Date("2/28/2003");
-    examsRegistered: Exam[] = [
+    examsRegistered: UserExam[] = [
         
     ];
     payments: Payment[] = [
         new Payment(750),
+        new Payment(1500),
         new Payment(1500)
     ];
 }

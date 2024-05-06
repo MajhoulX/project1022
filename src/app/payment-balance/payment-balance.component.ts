@@ -7,8 +7,7 @@ import { UserService } from '../../services/UserService';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './payment-balance.component.html',
-  styleUrl: './payment-balance.component.scss',
-  providers: [UserService]
+  styleUrl: './payment-balance.component.scss'
 })
 export class PaymentBalanceComponent implements OnInit{
   amount:number = 0;
@@ -17,7 +16,7 @@ export class PaymentBalanceComponent implements OnInit{
 
   ngOnInit(): void {
     let sum: number = 0;
-    this.userService.user.payments.forEach(p => {
+    this.userService.getUser.payments.forEach(p => {
       sum += p.amount;
     });
     this.amount = sum;
