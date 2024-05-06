@@ -22,13 +22,14 @@
                     @for (institute of studyField.institutions; track $index) {
                         <p style="margin: 0; font-size: smaller; font-weight: light;">{{institute}}</p>
                     }
-                    <select style="width: 100%; margin-top: 16px; text-align: center;">
+                    <select [id]="studyField.name" style="width: 100%; margin-top: 16px; text-align: center;" required>
                         <option value="" selected>Sessions</option>
                         @for (exam of studyField.exams; track $index) {
                             <option value="{{exam.id}}">Concour du {{exam.date.toDateString()}}</option>
                         }
+                        
                     </select>
-                    <button style="width: 100%; margin-top: 8px;" type="button">Choisir</button>
+                    <button style="width: 100%; margin-top: 8px;" type="button" (click)="addToRegisteredExams(studyField.name)">Choisir</button>
                 </div>
             }
         </div>

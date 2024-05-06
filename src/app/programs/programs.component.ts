@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Faculty, faculties } from '../../models/faculty';
-import { ExamType } from '../../models/exam';
+import { Exam, ExamType } from '../../models/exam';
 import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
+import { UserService } from '../../services/UserService';
+import { FormsModule } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
+import { UserExam } from '../../models/userExam';
 
 @Component({
     selector: 'app-programs',
@@ -12,7 +16,19 @@ import { PaymentBalanceComponent } from "../payment-balance/payment-balance.comp
 })
 export class ProgramsComponent {
   faculties: Faculty[];
-  constructor(){
+  constructor(private userService:UserService, @Inject(DOCUMENT) private doc:Document){
     this.faculties = faculties; 
+  }
+
+  addToRegisteredExams(examName: string){
+    const e = this.doc.getElementById(examName) as HTMLSelectElement;
+    const ex = faculties.flatMap(f => f.fieldOfStudies.flatMap(s => s.exams));
+    const cex = ex.find(exx => exx.id.toString() == e.value)!;
+    if(cex){
+      const n = this.userService.getUser.examsRegistered.push(new UserExam(cex));
+      console.log('added ' + this.userService.getUser.examsRegistered.length);
+    }else{
+      console.log("invalid option");
+    }
   }
 }

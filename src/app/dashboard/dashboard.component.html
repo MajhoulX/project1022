@@ -36,22 +36,22 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
                         alt="" style="height: 80px;">
                 </div>
-                <p style="text-transform: uppercase; text-align: center; margin-top: 32px; margin-bottom: 0;">m.
-                    sulaiman mukhtar</p>
-                <p style="color: dodgerblue; text-align: center; margin: 0;">#2425-08882</p>
+                <p style="text-transform: uppercase; text-align: center; margin-top: 32px; margin-bottom: 0;">
+                    {{user?.civility}}. {{user?.firstName}} {{user?.lastName}}</p>
+                <p style="color: dodgerblue; text-align: center; margin: 0;">{{user?.id}}</p>
                 <div class="d-flex justify-content-between">
                     <p>Création</p>
-                    <p>22-04-2024</p>
+                    <p>{{user?.joined?.toLocaleDateString()}}</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <p>Téléphone</p>
-                    <p>0777052353</p>
+                    <p>{{user?.phone}}</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <p>E-mail</p>
-                    <p>sulmuk28&commat;gmail.com</p>
+                    <p>{{user?.email}}</p>
                 </div>
-                <a class="button" href="#"><span>Mon profil</span></a>
+                <a class="button" routerLink="/dashboard/profil"><span>Mon profil</span></a>
             </div>
         </div>
         <div class="col-md-12 mb-4">
@@ -90,12 +90,20 @@
         <div class="col-md-12">
             <p>Mes sessions</p>
             <table class="table">
-                <tbody>
+                <thead>
                     <tr>
                         <th>Session</th>
                         <th>Programme</th>
                         <th>Etat</th>
                     </tr>
+                </thead>
+                <tbody>
+                    @for (session of sessions; track $index) {
+                        <tr>
+                            <td>{{session.id}}</td>
+                            <td>{{session.status}}</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
