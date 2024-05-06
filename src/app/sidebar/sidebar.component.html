@@ -4,12 +4,17 @@
     </div>
     <div id="tabs">
         <app-navlink [link]="dashboardLink" id="dashboardLink"></app-navlink>
-        
-        <div *ngFor="let group of linkGroup">
-            <p nav-header>{{group.title}}</p>
-            <ul>
-                <li *ngFor="let link of group.links"><app-navlink [link]="link" routerLinkActive=""></app-navlink></li>
-            </ul>
-        </div>
+
+        @for (group of linkGroup; track $index) {
+        <p nav-header>{{group.title}}</p>
+        <ul>
+            @for (link of group.links; track $index) {
+            <li>
+                <app-navlink [link]="link">
+                </app-navlink>
+            </li>
+            }
+        </ul>
+        }
     </div>
 </div>

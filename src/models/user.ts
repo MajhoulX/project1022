@@ -6,7 +6,7 @@ export class User {
     firstName: string = "Khalil";
     lastName: string = "Hashim";
     civility: string = "M";
-    phone: string = "0777052353";
+    phone: string = "0769052353";
     email: string = "khahas@gmail.com";
     cin: string = "J553295";
     passportNumber: string = "J553295";

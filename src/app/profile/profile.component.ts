@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/UserService';
-import { TestService } from '../../services/testService';
 
 @Component({
   selector: 'app-profile',
@@ -17,9 +16,7 @@ export class ProfileComponent implements OnInit {
   lastName: string = "";
   phone: string = "";
 
-  constructor(private userService: UserService, tSrv:TestService) {
-    //console.log(userService.id);
-    console.log(tSrv.getRand());
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -37,6 +34,5 @@ export class ProfileComponent implements OnInit {
     user.phone = this.phone;
 
     this.userService.updateUser(user);
-    //console.log(user);
   }
 }
