@@ -119,14 +119,9 @@
                                                         for="serieField" class="fl-label">Série (∗)</label><select
                                                         class="form-control required fl-select" name="serieField"
                                                         id="serieField">
+                                                        @for (item of items; track $index) {}
                                                         <option value="">Choisissez une série</option>
-                                                        <option value="1">Sciences Mathématiques</option>
-                                                        <option value="2">Sciences Expérimentales</option>
-                                                        <option value="5">Lettres et Sciences Humaines</option>
-                                                        <option value="6">Sciences et Technologies</option>
-                                                        <option value="7">Sciences Economiques et de Gestion
-                                                        </option>
-                                                        <option value="12">Art Appliqués</option>
+                                                        
                                                     </select></div>
                                             </div>
                                         </div>
@@ -139,7 +134,7 @@
                                                         class="fl-label">Option (∗)</label><select
                                                         class="form-control required fl-select" name="bacField"
                                                         id="bacField">
-                                                        <option value="">Choisissez une option</option>
+                                                        <option value="Choisissez une option">Choisissez une option</option>
                                                     </select></div>
                                             </div>
                                         </div>
@@ -151,7 +146,7 @@
                                                     class="fl-label">Code massar</label><input type="text"
                                                     name="massarField" id="massarField"
                                                     class="form-control fl-input required" placeholder="Code massar"
-                                                    maxlength="10"></div>
+                                                    maxlength="10" [(ngModel)]="massarCode"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6"></div>
@@ -162,10 +157,11 @@
                                                 <div class="fl-wrap fl-wrap-select fl-is-required"><label
                                                         for="typeSystemField" class="fl-label">Type d'établissement
                                                         (∗)</label><select class="form-control required fl-select"
-                                                        name="typeSystemField" id="typeSystemField">
-                                                        <option value="">Type d'établissement</option>
-                                                        <option value="Privé">Privé</option>
-                                                        <option value="Public">Public</option>
+                                                        name="typeSystemField" id="typeSystemField"
+                                                        [(ngModel)]="institutionType">
+                                                        @for (item of listOfInstitutions; track $index) {
+                                                            <option value="{{item}}">{{item}}</option>
+                                                        }
                                                     </select></div>
                                             </div>
                                         </div>
@@ -178,7 +174,8 @@
                                                     établissement (∗)</label><input type="text"
                                                     name="etablissementField" id="etablissementField" value=""
                                                     class="form-control required fl-input"
-                                                    placeholder="Nom de votre établissement (∗)"></div>
+                                                    placeholder="Nom de votre établissement (∗)"
+                                                    [(ngModel)]="institutionName"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">

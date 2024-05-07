@@ -18,23 +18,13 @@
 
                                     <div class="col-md-12 form-group radio_input">
                                         <label>Civilité (∗) :</label>
-                                        <label class="container_radio mr-3">Mlle
-                                            <input type="radio" name="obtenueField" value="Oui" id="moyYes"
-                                                class="required">
+                                        @for (cv of civilityValues; track $index) {
+                                        <label class="container_radio mr-3">{{cv}}
+                                            <input type="radio" [(ngModel)]="civility" name="obtenueField"
+                                                value="{{cv}}" id="moyYes" class="required">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <label class="container_radio mr-3">Mme
-                                            <input type="radio" name="obtenueField" value="Non" id="moyNo"
-                                                class="required" checked="">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="container_radio mr-3">M
-                                            <input type="radio" name="obtenueField" value="Non" id="moyNo"
-                                                class="required" checked="">
-                                            <span class="checkmark"></span>
-                                        </label>
-
-
+                                        }
                                     </div>
                                     <span style="display: block;"></span>
                                     <div class="col-md-6">
@@ -45,10 +35,10 @@
                                                     <label for="nationaliteField" class="fl-label">Nationalité
                                                         (∗)</label>
                                                     <select class="form-control required fl-select"
-                                                        name="nationaliteField" id="nationaliteField">
-                                                        <option value="">Nationalité</option>
+                                                        name="nationaliteField" id="nationaliteField"
+                                                        [(ngModel)]="nationality">
                                                         @for (country of countries; track $index) {
-                                                        <option value="{{country.name}}">{{country.name}}</option>
+                                                        <option value="{{country}}">{{country}}</option>
                                                         }
                                                     </select>
                                                 </div>
@@ -57,14 +47,21 @@
                                     </div>
                                     <div class="col-md-6" id="divCIN">
                                         <div class="form-group">
-
+                                            @if (nationality == "Morocco") {
                                             <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField"
                                                     class="fl-label">N° CIN (∗)</label><input type="text"
                                                     name="cinField" id="cinField" class="form-control required fl-input"
-                                                    placeholder="N° CIN (∗)" maxlength="8"></div>
+                                                    [(ngModel)]="cin" placeholder="N° CIN (∗)" maxlength="8"></div>
+                                            }@else{
+                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField"
+                                                    class="fl-label">Passport (∗)</label><input type="text"
+                                                    name="cinField" id="cinField" class="form-control required fl-input"
+                                                    [(ngModel)]="passportNumber" placeholder="N° Passport (∗)"
+                                                    maxlength="8"></div>
+                                            }
                                         </div>
                                     </div>
-                                    <div class="col-md-6" id="divPasseport" style="display: none;">
+                                    <!-- <div class="col-md-6" id="divPasseport" >
                                         <div class="form-group">
 
                                             <div class="fl-wrap fl-wrap-input"><label for="passeportField"
@@ -73,7 +70,7 @@
                                                     class="form-control fl-input" placeholder="N° Passeport (∗)">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-6">
                                         <div class="form-group">
 
@@ -83,11 +80,11 @@
                                                         résidence (∗)</label>
                                                     <select class="form-control required fl-select"
                                                         name="paysResidenceField" id="paysResidenceField"
-                                                        [(ngModel)]="selectedResidenceCountry"
+                                                        [(ngModel)]="residentCountry"
                                                         (change)="onResidenceCountryChanged()">
                                                         <option value="" selected>Pays de résidence</option>
                                                         @for (country of countries; track $index) {
-                                                        <option value="{{country.name}}">{{country.name}}</option>
+                                                        <option value="{{country}}">{{country}}</option>
                                                         }
                                                     </select>
                                                 </div>
@@ -102,8 +99,8 @@
                                             <div class="fl-wrap fl-wrap-select fl-is-required"><label
                                                     for="villeResidenceField" class="fl-label">Ville de résidence
                                                     (∗)</label><select class="form-control required fl-select"
-                                                    name="villeResidenceField" id="villeResidenceField">
-                                                    <option value="">Ville de résidence</option>
+                                                    name="villeResidenceField" id="villeResidenceField"
+                                                    [(ngModel)]="city">
                                                     @for (city of cities; track $index) {
                                                     <option [value]="city">{{city}}</option>
                                                     }
@@ -116,9 +113,10 @@
 
                                             <div class="fl-wrap fl-wrap-input"><label for="adressePostaleField"
                                                     class="fl-label">Adresse postale</label><input type="text"
-                                                    name="adressePostaleField" id="adressePostaleField"
-                                                    class="form-control fl-input" autocomplete="off" value=""
-                                                    placeholder="Adresse postale" style="width: 95%"></div>
+                                                    [(ngModel)]="address" name="adressePostaleField"
+                                                    id="adressePostaleField" class="form-control fl-input"
+                                                    autocomplete="off" value="" placeholder="Adresse postale"
+                                                    style="width: 95%"></div>
                                         </div>
                                     </div>
 
@@ -127,8 +125,8 @@
 
                                             <div class="fl-wrap fl-wrap-input fl-is-required"><label
                                                     for="dateNaissanceField" class="fl-label">Date de naissance
-                                                    (∗)</label><input type="text" name="dateNaissanceField"
-                                                    id="dateNaissanceField"
+                                                    (∗)</label><input [(ngModel)]="birthDate" type="date"
+                                                    name="dateNaissanceField" id="dateNaissanceField"
                                                     class="form-control datepicker required fl-input" autocomplete="off"
                                                     placeholder="Date de naissance (∗)"></div>
                                         </div>
@@ -140,12 +138,11 @@
                                                 <div class="fl-wrap fl-wrap-select fl-is-required"><label
                                                         for="systemEtudeField" class="fl-label">Système d'étude
                                                         (∗)</label><select class="form-control required fl-select"
-                                                        name="systemEtudeField" id="systemEtudeField">
-                                                        <option value="">Système d'étude</option>
-                                                        <option value="1">Marocain</option>
-                                                        <option value="2">Mission (Française)</option>
-                                                        <option value="4">Mission (Espagnole, belge)</option>
-                                                        <option value="3">Etranger</option>
+                                                        name="systemEtudeField" id="systemEtudeField"
+                                                        [(ngModel)]="studySystem">
+                                                        @for (item of studySystems; track $index) {
+                                                            <option value="{{item}}">{{item}}</option>
+                                                        }
                                                     </select></div>
 
                                             </div>
@@ -169,7 +166,7 @@
                                     </div>
                                 </div>
                                 <div class="signin">
-                                    <input type="submit" class="submit" value="Suivant...">
+                                    <button type="button" class="submit" value="" (click)="onNext()">Suivant</button>
                                 </div>
                             </div>
 

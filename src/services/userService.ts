@@ -7,15 +7,15 @@ import { User } from "../models/user";
 export class UserService {
     private _user: User;
 
-    constructor(){
+    constructor() {
         this._user = new User();
     }
 
     get getUser(): User {
         return this._user;
     }
-    
-    updateUser(user: User){
+
+    updateUser(user: User) {
         this._user = user;
     }
 }
