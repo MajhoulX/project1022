@@ -3,10 +3,23 @@
         <div class="welcome">
             <h1 class="welcomeUser"> <span>Bienvenue</span>, {{firstName}}</h1>
             <p class="mb-4">Profil</p>
-            <div class="row">
-                <div class="col-9">
-                    <div class="frame">
-                        <div class="row my-4">
+
+        </div>
+    </div>
+    <div class="widget">
+        <div class="widgetsContainer">
+            <div class="widgetHeader">
+                <h2 class="title">
+                    Mes données personnelles
+                </h2>
+            </div>
+            <div class="formStyle">
+
+
+                <div class="widgetCont">
+                    <div class="formStyle">
+                        
+                        <div class="row mb-4">
                             <p class="col">Civilité</p>
                             <div class="col">
                                 <div class="form-check form-check-inline">
@@ -47,71 +60,10 @@
                             <button class="btn btn-primary" type="button" (click)="updateUser()">Enregistrer</button>
                         </div>
                     </div>
-
                 </div>
+            </div>
 
-
-                <div class="widget">
-                    <div class="widgetsContainer">
-                        <div class="widgetHeader">
-                            <h2 class="title">
-                                Mes données personnelles
-                            </h2>
-                        </div>
-                        <div class="formStyle">
-
-
-                            <div class="widgetCont">
-                                <div class="formStyle">
-                                    <div class="col-md-12">
-                                        <dl>
-                                            <dt class="col-md-3">Civilité</dt>
-                                            <input type="radio" name="Civilité" id="Monsieur">
-                                            <label for="Monsieur" style="padding-right: 5px;">M</label>
-                                            <input type="radio" name="Civilité" id="Civilité">
-                                            <label for="Madame" style="padding-right: 5px;">Mme</label>
-                                            <input type="radio" name="Civilité" id="Mademoiselle">
-                                            <label for="Mademoiselle">Mlle</label>
-
-                                        </dl>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <dl>
-                                            <dt class="col-md-3">Code d'étudiant</dt>
-                                            <dd class="col-md-3" id="codeEleve"></dd>
-                                        </dl>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <dl>
-                                            <dt class="col-md-3">Prénom</dt>
-                                            <dd class="col-md-3">{{firstName}}</dd>
-                                        </dl>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <dl>
-                                            <dt class="col-md-3">Nom</dt>
-                                            <dd class="col-md-3">{{lastName}}</dd>
-                                        </dl>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <dl>
-                                            <dt class="col-md-3">Numéro de téléphone</dt>
-                                            <dd class="col-md-3">{{phone}}</dd>
-                                        </dl>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <dl>
-                                            <dt class="col-md-3">Addresse émail</dt>
-                                            <dd class="col-md-3">{{email}}</dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- <p class="mb-4">Profil</p>
+            <!-- <p class="mb-4">Profil</p>
 <div class="row">
     <div class="col-9">
         <div class="frame">

@@ -57,7 +57,6 @@
                                     </div>
                                     <div class="col-md-6" id="divCIN">
                                         <div class="form-group">
-
                                             <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField"
                                                     class="fl-label">N° CIN (∗)</label><input type="text"
                                                     name="cinField" id="cinField" class="form-control required fl-input"
@@ -85,7 +84,7 @@
                                                         name="paysResidenceField" id="paysResidenceField"
                                                         [(ngModel)]="selectedResidenceCountry"
                                                         (change)="onResidenceCountryChanged()">
-                                                        <option value="" selected>Pays de résidence</option>
+                                                        <option value="Pays de résidence" selected>Pays de résidence</option>
                                                         @for (country of countries; track $index) {
                                                         <option value="{{country.name}}">{{country.name}}</option>
                                                         }
@@ -127,7 +126,7 @@
 
                                             <div class="fl-wrap fl-wrap-input fl-is-required"><label
                                                     for="dateNaissanceField" class="fl-label">Date de naissance
-                                                    (∗)</label><input type="text" name="dateNaissanceField"
+                                                    (∗)</label><input type="date" name="dateNaissanceField"
                                                     id="dateNaissanceField"
                                                     class="form-control datepicker required fl-input" autocomplete="off"
                                                     placeholder="Date de naissance (∗)"></div>

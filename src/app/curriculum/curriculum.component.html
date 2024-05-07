@@ -4,67 +4,46 @@
     </div>
     <div class="widgetCont">
         <div class="formStyle">
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Code étudiant</dt>
-                    <dd class="col-md-3" id="codeEleve">D132236969</dd>
-                </dl>
-            </div>
-
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Nom Complet</dt>
-                    <dd class="col-md-3">{{user.firstName}} {{user.lastName}}</dd>
-                </dl>
-            </div>
-
-            <!-- Add more general information fields as needed -->
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Address émail</dt>
-                    <dd class="col-md-3">{{user.email}}</dd>
-                </dl>
-            </div>
-
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Téléphone</dt>
-                    <dd class="col-md-3">{{user.phone}}</dd>
-                </dl>
-            </div>
-
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">CIN</dt>
-                    <dd class="col-md-3">{{user.cin}}</dd>
-                </dl>
-            </div>
-
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Date de naissance</dt>
-                    <dd class="col-md-3">{{user.birthDate}}</dd>
-                </dl>
-            </div>
-
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Nationalité</dt>
-                    <dd class="col-md-3">{{user.nationality}}</dd>
-                </dl>
-            </div>
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Résidence</dt>
-                    <dd class="col-md-3">{{user.residentCountry}}-{{user.residentState}}</dd>
-                </dl>
-            </div>
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Address</dt>
-                    <dd class="col-md-3">{{user.address}}</dd>
-                </dl>
-            </div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Nom complete</td>
+                        <td class="fw-bold" style="text-transform: uppercase;">{{user.civility}}. {{user.firstName}} {{user.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Code étudiant</td>
+                        <td class="fw-bold">{{user.id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Adresse Email</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Téléphone</td>
+                        <td>{{user.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>CIN</td>
+                        <td>{{user.cin}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date de naissance</td>
+                        <td>{{user.birthDate.toLocaleDateString()}}</td>
+                    </tr>
+                    <tr>
+                        <td>Nationalité</td>
+                        <td>{{user.nationality}}</td>
+                    </tr>
+                    <tr>
+                        <td>Résidence</td>
+                        <td>{{user.residentState}} - {{user.residentCountry}}</td>
+                    </tr>
+                    <tr>
+                        <td>Adresse</td>
+                        <td>{{user.address}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>
@@ -77,54 +56,66 @@
     </div>
     <div class="widgetCont">
         <div class="formStyle">
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Système d'étude</dt>
-                    <dd class="col-md-3" id="codeEleve">D132236969</dd>
-                </dl>
-            </div>
-
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Série</dt>
-                    <dd class="col-md-3">{{user.firstName}} {{user.lastName}}</dd>
-                </dl>
-            </div>
-
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Option</dt>
-                    <dd class="col-md-3">{{user.email}}</dd>
-                </dl>
-            </div>
-
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Niveau d'études</dt>
-                    <dd class="col-md-3">{{user.phone}}</dd>
-                </dl>
-            </div>
-
-            <div class="col-md-12">
-                <dl>
-                    <dt class="col-md-3">Établissement</dt>
-                    <dd class="col-md-3">{{user.cin}}</dd>
-                </dl>
-            </div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Système d'étude</td>
+                        <td>{{user.bacStudySystem}} | Massar: {{user.massar}}</td>
+                    </tr>
+                    <tr>
+                        <td>Série</td>
+                        <td>{{user.bacSerie}}</td>
+                    </tr>
+                    <tr>
+                        <td>Option</td>
+                        <td>{{user.bacOption}}</td>
+                    </tr>
+                    <tr>
+                        <td>Niveau d'études</td>
+                        <td>{{user.bacLevel}}</td>
+                    </tr>
+                    <tr>
+                        <td>Établissement</td>
+                        <td>{{user.bacInstitution}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
-<span>
+
     <div class="row">
         <div class="col-md-6 ">
             <div class="widget">
                 <div class="widgetHeader light">
-                    <h2 class="title">Informations générales</h2>
+                    <h2 class="title">Notes de l'année terminale (2ème année du Bac)</h2>
                 </div>
                 <div class="widgetCont">
                     <div class="formStyle">
-                        <!-- Another set of general information fields -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>MATIÈRES</th>
+                                    <th>Examen national</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Anglais</td>
+                                    <td><input class="form-control" type="number"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mathématiques</td>
+                                    <td><input class="form-control" type="number"></td>
+                                </tr>
+                                <tr>
+                                    <td>Physique</td>
+                                    <td><input class="form-control" type="number"></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -134,19 +125,209 @@
         <div class="col-md-6 ">
             <div class="widget">
                 <div class="widgetHeader light">
-                    <h2 class="title">Informations générales</h2>
+                    <h2 class="title">Note de l’examen Régional</h2>
                 </div>
                 <div class="widgetCont">
                     <div class="formStyle">
-                        <!-- Another set of general information fields -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>FRANÇAIS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input class="form-control" type="number" title="" placeholder=""></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
-</span>
 
-    <!-- <div class="d-flex justify-content-between mb-3 align-items-center">
+
+<div class="col-md-6 d-flex justify-content-center">
+    <button class="btn btn-success" type="button">Enregistrer</button>
+</div>
+    <!--<div class="wrapper">
+    <div class="container main">
+        <div class="row">
+            <div class="col-md-4 side-image">
+                <div class="text">
+                    <p>Join the community of musicians <i>- school</i></p>
+                </div>
+            </div>
+
+            <div class="col-md-8 right">
+                <div class="container">
+                    <header>Bienvenue </header>
+                    <form action="">
+                        <div class="form-first">
+                            <div class="details">
+                                <span class="title">Veuillez renseigner les informations demandées</span>
+                                <div class="fields">
+
+                                    <div class="col-md-12 form-group radio_input">
+                                        <label>Civilité (∗) :</label>
+                                        <label class="container_radio mr-3">Mlle
+                                            <input type="radio" name="obtenueField" value="Oui" id="moyYes"
+                                                class="required">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_radio mr-3">Mme
+                                            <input type="radio" name="obtenueField" value="Non" id="moyNo"
+                                                class="required" checked="">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_radio mr-3">M
+                                            <input type="radio" name="obtenueField" value="Non" id="moyNo"
+                                                class="required" checked="">
+                                            <span class="checkmark"></span>
+                                        </label>
+
+
+                                    </div>
+                                    <span style="display: block;"></span>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <div class="styled-select clearfix">
+                                                <div class="fl-wrap fl-wrap-select fl-is-active fl-is-required">
+                                                    <label for="nationaliteField" class="fl-label">Nationalité
+                                                        (∗)</label>
+                                                    <select class="form-control required fl-select"
+                                                        name="nationaliteField" id="nationaliteField">
+                                                        <option value="">Nationalité</option>
+                                                        @for (country of countries; track $index) {
+                                                        <option value="{{country.name}}">{{country.name}}</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" id="divCIN">
+                                        <div class="form-group">
+                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField"
+                                                    class="fl-label">N° CIN (∗)</label><input type="text"
+                                                    name="cinField" id="cinField" class="form-control required fl-input"
+                                                    placeholder="N° CIN (∗)" maxlength="8"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" id="divPasseport" style="display: none;">
+                                        <div class="form-group">
+
+                                            <div class="fl-wrap fl-wrap-input"><label for="passeportField"
+                                                    class="fl-label">N° Passeport (∗)</label><input type="text"
+                                                    name="passeportField" id="passeportField"
+                                                    class="form-control fl-input" placeholder="N° Passeport (∗)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <div class="styled-select clearfix">
+                                                <div class="fl-wrap fl-wrap-select fl-is-active fl-is-required">
+                                                    <label for="paysResidenceField" class="fl-label">Pays de
+                                                        résidence (∗)</label>
+                                                    <select class="form-control required fl-select"
+                                                        name="paysResidenceField" id="paysResidenceField"
+                                                        [(ngModel)]="selectedResidenceCountry"
+                                                        (change)="onResidenceCountryChanged()">
+                                                        <option value="Pays de résidence" selected>Pays de résidence</option>
+                                                        @for (country of countries; track $index) {
+                                                        <option value="{{country.name}}">{{country.name}}</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <div class="fl-wrap fl-wrap-select fl-is-required"><label
+                                                    for="villeResidenceField" class="fl-label">Ville de résidence
+                                                    (∗)</label><select class="form-control required fl-select"
+                                                    name="villeResidenceField" id="villeResidenceField">
+                                                    <option value="">Ville de résidence</option>
+                                                    @for (city of cities; track $index) {
+                                                    <option [value]="city">{{city}}</option>
+                                                    }
+                                                </select></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+
+                                            <div class="fl-wrap fl-wrap-input"><label for="adressePostaleField"
+                                                    class="fl-label">Adresse postale</label><input type="text"
+                                                    name="adressePostaleField" id="adressePostaleField"
+                                                    class="form-control fl-input" autocomplete="off" value=""
+                                                    placeholder="Adresse postale" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label
+                                                    for="dateNaissanceField" class="fl-label">Date de naissance
+                                                    (∗)</label><input type="date" name="dateNaissanceField"
+                                                    id="dateNaissanceField"
+                                                    class="form-control datepicker required fl-input" autocomplete="off"
+                                                    placeholder="Date de naissance (∗)"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <div class="styled-select clearfix">
+                                                <div class="fl-wrap fl-wrap-select fl-is-required"><label
+                                                        for="systemEtudeField" class="fl-label">Système d'étude
+                                                        (∗)</label><select class="form-control required fl-select"
+                                                        name="systemEtudeField" id="systemEtudeField">
+                                                        <option value="">Système d'étude</option>
+                                                        <option value="1">Marocain</option>
+                                                        <option value="2">Mission (Française)</option>
+                                                        <option value="4">Mission (Espagnole, belge)</option>
+                                                        <option value="3">Etranger</option>
+                                                    </select></div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group radio_input">
+                                        <label>Niveau d'études (∗) :</label>
+                                        <label class="container_radio mr-3">Bac obtenu
+                                            <input type="radio" name="obtenueField" value="Oui" id="moyYes"
+                                                class="required" style="width: 10%; ">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_radio mr-3">En année terminale du Bac
+                                            <input type="radio" name="obtenueField" value="Non" id="moyNo"
+                                                class="required" checked="" style="width: 5%;">
+                                            <span class="checkmark"></span>
+                                        </label>
+
+
+                                    </div>
+                                </div>
+                                <div class="signin">
+                                    <input type="submit" class="submit" value="Suivant...">
+                                </div>
+                            </div>
+
+                        </div>-->
+    <!-- <div class="d-flex justify-content-between mb-3 align-items-center" CODE DIAL SOUALAYMAN>
     <p class="m-0">Mon cursus</p>
     <a href="#"
         style="background-color: rgb(77, 145, 122); display: flex; padding: 8px; text-decoration: none; color: white;">
