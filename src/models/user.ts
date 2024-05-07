@@ -36,3 +36,7 @@ export class User {
         new Payment(1500)
     ];
 }
+
+export enum Civility{
+    
+};

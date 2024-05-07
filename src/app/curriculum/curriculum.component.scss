@@ -1,3 +1,96 @@
-span[ul]{
-    text-decoration: underline;
+/* Keep previous CSS */
+.welcome {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 45px;
 }
+
+.title {
+    text-align: center;
+    margin-bottom: 20px; /* Reduce margin for tighter spacing */
+}
+
+.widgetsContainer {
+    background-color: #ececec;
+    width: 80%; /* Adjust width to your preference */
+    max-width: 800px; /* Limit maximum width for better readability */
+    margin: 0 auto; /* Center the container horizontally */
+    border-radius: 10px;
+    padding: 20px; /* Increase padding for better spacing */
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.formStyle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Align columns with space between */
+}
+
+.col-md-12 {
+    width: calc(50% - 15px); /* Two columns layout with reduced spacing */
+    margin-bottom: 15px; /* Reduce spacing between rows */
+}
+
+@media (max-width: 768px) {
+    .col-md-12 {
+        width: 100%; /* On smaller screens, make it full width */
+    }
+}
+
+/* New CSS for the widget containers */
+.widget {
+    margin-bottom: 30px; /* Add space between widget containers */
+}
+
+.widgetHeader {
+    padding: 10px;
+    background-color: #f0f0f0; /* Light background color for headers */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.widgetCont {
+    padding: 20px; /* Increase padding for better separation */
+    border: 1px solid #ccc; /* Add border for clearer distinction */
+    border-radius: 10px;
+    background-color: #fff; /* White background for content */
+}
+
+.blocBtn {
+    margin-top: 15px; /* Add space above buttons */
+    text-align: right; /* Align buttons to the right */
+}
+
+.blocBtn button {
+    margin-left: 10px; /* Add space between buttons */
+}
+
+/* Additional CSS for form elements */
+.form-control {
+    width: 100%;
+    margin-bottom: 15px; /* Add space below form controls */
+}
+
+.formItem {
+    margin-bottom: 15px; /* Add space below form items */
+}
+
+.selectbox,
+.form-group {
+    margin-bottom: 15px; /* Add space below select boxes and form groups */
+}
+
+/* Adjust styling for checkboxes and labels */
+label {
+    display: block; /* Ensure labels are on their own line */
+}
+
+input[type="checkbox"] {
+    margin-right: 5px; /* Add space between checkbox and label */
+}
+
+// span[ul]{
+//     text-decoration: underline;
+// }

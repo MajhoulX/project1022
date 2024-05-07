@@ -1,0 +1,39 @@
+.welcome {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px; /* Reduce margin for tighter spacing */
+}
+
+.widgetsContainer {
+    background-color: #ececec;
+    width: 100%; /* Adjust width to your preference */
+    max-width: 700px; /* Limit maximum width for better readability */
+    margin: 0 auto; /* Center the container horizontally */
+    border-radius: 10px;
+    padding: 20px; /* Increase padding for better spacing */
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.formStyle {
+    display: flex;
+    flex-wrap: wrap;
+     /* Align columns with space between */
+}
+
+.col-md-12 {
+    width: calc(50% - 1px); /* Two columns layout with some spacing */
+    margin-bottom: 20px; /* Adjust spacing between rows */
+}
+
+@media (max-width: 768px) {
+    .col-md-12 {
+        width: 100%; /* On smaller screens, make it full width */
+    }
+}
