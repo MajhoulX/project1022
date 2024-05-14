@@ -3,12 +3,14 @@ import { User } from '../../models/user';
 import { FormsModule } from '@angular/forms';
 import { userService } from '../../services/userService';
 import {MatCardModule} from '@angular/material/card';
+import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
+
 
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [FormsModule,MatCardModule],
+  imports: [FormsModule,MatCardModule,PaymentBalanceComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
