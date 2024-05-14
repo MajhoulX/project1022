@@ -4,13 +4,17 @@ a{
     height: 40px;
     box-sizing: border-box;
     display: flex;
-    color: #aac4e1;
+    color: #363636;
     font-weight: bold;
+    text-decoration: none;
 }
 a:hover{
-    background-color: #526484;
+    background-color: #ececec;
+    color: #363636;
+}
+a.active-route{
+    background-color: grey;
     color: white;
-    text-decoration: none;
 }
 
 span{

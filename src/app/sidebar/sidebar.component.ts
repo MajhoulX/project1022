@@ -17,7 +17,7 @@ export class SidebarComponent {
     return this._isVisible;
   } 
   dashboardLink:Link = {
-    route: "/dashboard",
+    route: "/portal/dashboard",
     isActive: false,
     displayText: "Tableau de bord",
     icon: ""

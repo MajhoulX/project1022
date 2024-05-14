@@ -5,13 +5,13 @@ import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard-layout',
+  selector: 'app-portal-layout',
   standalone: true,
   imports: [TopbarComponent, SidebarComponent, FooterComponent, RouterOutlet],
-  templateUrl: './dashboard-layout.component.html',
-  styleUrl: './dashboard-layout.component.scss'
+  templateUrl: './portal-layout.component.html',
+  styleUrl: './portal-layout.component.scss'
 })
-export class DashboardLayoutComponent {
+export class PortalLayoutComponent {
   @ViewChild(SidebarComponent) sidebar: SidebarComponent | undefined;
 
   toggleSidebar(): void {

@@ -25,6 +25,6 @@ export class PaymentComponent implements OnInit{
     return sum;
   }
   ngOnInit(): void {
-    this.payments = this.userService.getUser.payments;
+    //this.payments = this.userService.getUser.payments;
   }
 }
