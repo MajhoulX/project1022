@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Payment } from '../../models/payment';
-import { userService } from '../../services/userService';
+import { UserService } from '../../services/UserService';
 import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
 import {MatCardModule} from '@angular/material/card';
 
@@ -14,7 +14,7 @@ import {MatCardModule} from '@angular/material/card';
 })
 export class PaymentComponent implements OnInit{
   payments:Payment[] = [];
-  constructor(private userService:userService){
+  constructor(private userService:UserService){
 
   }
   getTotal(): number{

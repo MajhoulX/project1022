@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { FormsModule } from '@angular/forms';
-import { userService } from '../../services/userService';
+import { UserService } from '../../services/UserService';
 import {MatCardModule} from '@angular/material/card';
 import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
 
@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   lastName: string = "";
   phone: string = "";
 
-  constructor(private userService: userService) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {

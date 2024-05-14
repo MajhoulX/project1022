@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { Faculty, faculties } from '../../models/faculty';
 import { Exam, ExamType } from '../../models/exam';
 import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
-import { userService } from '../../services/userService';
+import { UserService } from '../../services/UserService';
 import { FormsModule } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 import { UserExam } from '../../models/userExam';
@@ -17,7 +17,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 })
 export class ProgramsComponent {
   faculties: Faculty[];
-  constructor(private userService:userService, @Inject(DOCUMENT) private doc:Document){
+  constructor(private userService:UserService, @Inject(DOCUMENT) private doc:Document){
     this.faculties = faculties; 
   }
 

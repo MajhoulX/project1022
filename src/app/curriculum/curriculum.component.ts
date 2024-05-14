@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stage, stages } from '../../models/stage';
 import { CommonModule } from '@angular/common';
 import { User } from '../../models/user';
-import { userService } from '../../services/userService';
+import { UserService } from '../../services/UserService';
 
 @Component({
   selector: 'app-curriculum',
@@ -12,13 +12,13 @@ import { userService } from '../../services/userService';
   styleUrl: './curriculum.component.scss'
 })
 export class CurriculumComponent implements OnInit {
-  stages:Stage[] = stages;
-  user:User; 
+  stages: Stage[] = stages;
+  user: User;
 
-  constructor(private userService:userService){
+  constructor(private userService: UserService) {
     this.user = this.userService.getUser;
   }
-  
+
   ngOnInit(): void {
   }
 }

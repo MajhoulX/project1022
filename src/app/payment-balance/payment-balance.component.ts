@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { userService } from '../../services/userService';
+import { UserService } from '../../services/UserService';
 
 @Component({
   selector: 'app-payment-balance',
@@ -11,7 +11,7 @@ import { userService } from '../../services/userService';
 })
 export class PaymentBalanceComponent implements OnInit{
   amount:number = 0;
-  constructor(private userService: userService){
+  constructor(private userService: UserService){
   }
 
   ngOnInit(): void {
