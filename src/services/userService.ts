@@ -4,11 +4,11 @@ import { User, emptyUser } from "../models/user";
 @Injectable({
     providedIn: 'root'
 })
-export class userService {
+export class UserService {
     private _user: User;
 
     constructor() {
-        this._user = emptyUser;
+        this._user = new User();
     }
 
     get getUser(): User {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Stage, stages } from '../../models/stage';
-import { userService } from '../../services/userService';
+import { UserService } from '../../services/UserService';
 import { Exam } from '../../models/exam';
 import { User } from '../../models/user';
 import { Router, RouterLink } from '@angular/router';
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   user: User | undefined;
   sessions: Exam[] = [];
 
-  constructor(private userService:userService){
+  constructor(private userService:UserService){
 
   }
 
