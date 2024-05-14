@@ -9,18 +9,17 @@
 
             <div class="col-md-8 right">
                 <div class="container">
-                    <header>Bienvenue </header>
+                    <header>Bienvenue</header>
                     <form action="">
                         <div class="form-first">
                             <div class="details">
                                 <span class="title">Veuillez renseigner les informations demandées</span>
                                 <div class="fields">
-
                                     <div class="col-md-12 form-group radio_input">
-                                        <label>Civilité (∗) :</label>
+                                        <label [style.color]="(civilityValid ? 'black' : 'red')">Civilité (∗) :</label>
                                         @for (cv of civilityValues; track $index) {
                                         <label class="container_radio mr-3">{{cv}}
-                                            <input type="radio" [(ngModel)]="civility" name="obtenueField"
+                                            <input type="radio" [(ngModel)]="civility" name="civility"
                                                 value="{{cv}}" id="moyYes" class="required">
                                             <span class="checkmark"></span>
                                         </label>
@@ -29,10 +28,9 @@
                                     <span style="display: block;"></span>
                                     <div class="col-md-6">
                                         <div class="form-group">
-
                                             <div class="styled-select clearfix">
                                                 <div class="fl-wrap fl-wrap-select fl-is-active fl-is-required">
-                                                    <label for="nationaliteField" class="fl-label">Nationalité
+                                                    <label for="nationaliteField" [style.color]="(nationalityValid ? 'black' : 'red')" class="fl-label">Nationalité
                                                         (∗)</label>
                                                     <select class="form-control required fl-select"
                                                         name="nationaliteField" id="nationaliteField"
@@ -47,13 +45,13 @@
                                     </div>
                                     <div class="col-md-6" id="divCIN">
                                         <div class="form-group">
-                                            @if (nationality == "Morocco") {
-                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField"
+                                            @if (nationality == "Morocco" || nationality == "Nationalité") {
+                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField" [style.color]="(cinValid ? 'black' : 'red')"
                                                     class="fl-label">N° CIN (∗)</label><input type="text"
                                                     name="cinField" id="cinField" class="form-control required fl-input"
                                                     [(ngModel)]="cin" placeholder="N° CIN (∗)" maxlength="8"></div>
                                             }@else{
-                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField"
+                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField" [style.color]="(passportNumberValid ? 'black' : 'red')"
                                                     class="fl-label">Passport (∗)</label><input type="text"
                                                     name="cinField" id="cinField" class="form-control required fl-input"
                                                     [(ngModel)]="passportNumber" placeholder="N° Passport (∗)"
@@ -61,23 +59,11 @@
                                             }
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6" id="divPasseport" >
-                                        <div class="form-group">
-
-                                            <div class="fl-wrap fl-wrap-input"><label for="passeportField"
-                                                    class="fl-label">N° Passeport (∗)</label><input type="text"
-                                                    name="passeportField" id="passeportField"
-                                                    class="form-control fl-input" placeholder="N° Passeport (∗)">
-                                            </div>
-                                        </div>
-                                    </div> -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-
                                             <div class="styled-select clearfix">
                                                 <div class="fl-wrap fl-wrap-select fl-is-active fl-is-required">
-                                                    <label for="paysResidenceField" class="fl-label">Pays de
-                                                        résidence (∗)</label>
+                                                    <label for="paysResidenceField" class="fl-label" [style.color]="(residentCountryValid ? 'black' : 'red')">Pays de résidence (∗)</label>
                                                     <select class="form-control required fl-select"
                                                         name="paysResidenceField" id="paysResidenceField"
                                                         [(ngModel)]="residentCountry"
@@ -96,7 +82,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
 
-                                            <div class="fl-wrap fl-wrap-select fl-is-required"><label
+                                            <div class="fl-wrap fl-wrap-select fl-is-required"><label [style.color]="(cityValid ? 'black' : 'red')"
                                                     for="villeResidenceField" class="fl-label">Ville de résidence
                                                     (∗)</label><select class="form-control required fl-select"
                                                     name="villeResidenceField" id="villeResidenceField"
@@ -114,16 +100,14 @@
                                             <div class="fl-wrap fl-wrap-input"><label for="adressePostaleField"
                                                     class="fl-label">Adresse postale</label><input type="text"
                                                     [(ngModel)]="address" name="adressePostaleField"
-                                                    id="adressePostaleField" class="form-control fl-input"
-                                                    autocomplete="off" value="" placeholder="Adresse postale"
-                                                    style="width: 95%"></div>
+                                                    class="form-control fl-input" autocomplete="off"
+                                                    placeholder="Adresse postale" style="width: 95%"></div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-
-                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label
+                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label [style.color]="(birthDateValid ? 'black' : 'red')"
                                                     for="dateNaissanceField" class="fl-label">Date de naissance
                                                     (∗)</label><input [(ngModel)]="birthDate" type="date"
                                                     name="dateNaissanceField" id="dateNaissanceField"
@@ -135,13 +119,15 @@
                                         <div class="form-group">
 
                                             <div class="styled-select clearfix">
-                                                <div class="fl-wrap fl-wrap-select fl-is-required"><label
-                                                        for="systemEtudeField" class="fl-label">Système d'étude
-                                                        (∗)</label><select class="form-control required fl-select"
+                                                <div class="fl-wrap fl-wrap-select fl-is-required">
+                                                    <label [style.color]="(educationSystemValid ? 'black' : 'red')" for="systemEtudeField" class="fl-label">
+                                                        Système d'étude(∗)
+                                                    </label>
+                                                    <select class="form-control required fl-select"
                                                         name="systemEtudeField" id="systemEtudeField"
-                                                        [(ngModel)]="studySystem">
-                                                        @for (item of studySystems; track $index) {
-                                                            <option value="{{item}}">{{item}}</option>
+                                                        [(ngModel)]="educationSystem">
+                                                        @for (item of educationSystems; track $index) {
+                                                        <option value="{{item}}">{{item}}</option>
                                                         }
                                                     </select></div>
 
@@ -149,20 +135,33 @@
 
                                         </div>
                                     </div>
+                                    @if(educationSystem == "Etranger"){
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="styled-select clearfix">
+                                                    <div class="fl-wrap fl-wrap-select fl-is-required"><label [style.color]="(educationSystemCountryValid ? 'black' : 'red')"
+                                                            for="systemEtudeField" class="fl-label">Pays du système d'étude
+                                                            (∗)</label><select class="form-control required fl-select"
+                                                            [(ngModel)]="educationSystemCountry"
+                                                            name="edCo">
+                                                            @for (item of educationSystemCountries; track $index) {
+                                                            <option value="{{item}}">{{item}}</option>
+                                                            }
+                                                        </select></div>
+                                                </div>
+    
+                                            </div>
+                                        </div>
+                                    }
+                                    
                                     <div class="form-group radio_input">
-                                        <label>Niveau d'études (∗) :</label>
-                                        <label class="container_radio mr-3">Bac obtenu
-                                            <input type="radio" name="obtenueField" value="Oui" id="moyYes"
-                                                class="required" style="width: 10%; ">
+                                        <label [style.color]="(educationLevelValid ? 'black' : 'red')">Niveau d'études (∗) :</label>
+                                        @for (lvl of educationLevels; track $index) {
+                                        <label class="container_radio mr-3">{{lvl}}
+                                            <input [(ngModel)]="educationLevel" type="radio" name="obtenueField" value="{{lvl}}" class="required">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <label class="container_radio mr-3">En année terminale du Bac
-                                            <input type="radio" name="obtenueField" value="Non" id="moyNo"
-                                                class="required" checked="" style="width: 5%;">
-                                            <span class="checkmark"></span>
-                                        </label>
-
-
+                                        }
                                     </div>
                                 </div>
                                 <div class="signin">
