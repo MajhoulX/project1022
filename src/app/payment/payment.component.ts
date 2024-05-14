@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Payment } from '../../models/payment';
-import { UserService } from '../../services/UserService';
+import { userService } from '../../services/userService';
+import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
+import {MatCardModule} from '@angular/material/card';
+
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [],
+  imports: [MatCardModule],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss'
 })
 export class PaymentComponent implements OnInit{
   payments:Payment[] = [];
-  constructor(private userService:UserService){
+  constructor(private userService:userService){
 
   }
   getTotal(): number{

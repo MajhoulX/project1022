@@ -18,6 +18,7 @@
     box-sizing: border-box;
     position: relative;
     padding: 20px;
+    margin-top: 30px;
     
 }
 .title{
@@ -40,11 +41,7 @@
 
 .blocBtn {
     margin-top: 15px; /* Add space above buttons */
-    text-align: right; /* Align buttons to the right */
-}
-
-.blocBtn button {
-    margin-left: 10px; /* Add space between buttons */
+    
 }
 
 /* Additional CSS for form elements */
@@ -67,10 +64,8 @@ label {
     display: block; /* Ensure labels are on their own line */
 }
 
-input[type="checkbox"] {
-    margin-right: 5px; /* Add space between checkbox and label */
-}
 
-// span[ul]{
-//     text-decoration: underline;
-// }
+
+ span[ul]{
+     text-decoration: underline;
+ }

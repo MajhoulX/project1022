@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ProgramsComponent } from './programs.component';
 
 describe('ProgramsComponent', () => {

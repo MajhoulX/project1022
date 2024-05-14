@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stage, stages } from '../../models/stage';
 import { CommonModule } from '@angular/common';
 import { User } from '../../models/user';
-import { UserService } from '../../services/UserService';
+import { userService } from '../../services/userService';
 
 @Component({
   selector: 'app-curriculum',
@@ -15,7 +15,7 @@ export class CurriculumComponent implements OnInit {
   stages:Stage[] = stages;
   user:User; 
 
-  constructor(private userService:UserService){
+  constructor(private userService:userService){
     this.user = this.userService.getUser;
   }
   

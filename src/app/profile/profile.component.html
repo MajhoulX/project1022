@@ -1,12 +1,69 @@
 <div class="mainContent">
     <div class="welcomeWrapper">
         <div class="welcome">
-            <h1 class="welcomeUser"> <span>Bienvenue</span>, {{firstName}}</h1>
             <p class="mb-4">Profil</p>
-
+            <h1 class="welcomeUser"> <span>Bienvenue</span>, {{firstName}}</h1>
         </div>
     </div>
-    <div class="widget">
+    <mat-card class="cardthing">
+        <mat-card-title align="center" style="padding: 20px;">
+            Mes données personnelles
+        </mat-card-title>
+        <mat-card-content>
+            <div class="formStyle">
+                <div class="row mb-4">
+                    <p class="col">Civilité</p>
+                    <div class="col">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="civility" id="civility1">
+                            <label for="civility1">Mlle</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="civility" id="civility2">
+                            <label for="civility2">Mme</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="civility" id="civility3">
+                            <label for="civility3">M</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <p class="col">Nom</p>
+                    <input class="col form-control" type="text" [(ngModel)]="lastName">
+                </div>
+
+                <div class="row mb-4">
+                    <p class="col">Prénom</p>
+                    <input class="col form-control" type="text" [(ngModel)]="firstName">
+                </div>
+
+                <div class="row mb-4">
+                    <p class="col">Téléphone</p>
+                    <input class="col form-control" type="text" [(ngModel)]="phone">
+                </div>
+
+                <div class="row mb-4">
+                    <p class="col">Adresse Email</p>
+                    <input class="col form-control" type="text" [(ngModel)]="email">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary" type="button" (click)="updateUser()">Enregistrer</button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+
+
+
+
+
+
+
+
+    <!--   <div class="widget">
         <div class="widgetsContainer">
             <div class="widgetHeader">
                 <h2 class="title">
@@ -61,9 +118,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <!-- <p class="mb-4">Profil</p>
+
+
+    <!-- <p class="mb-4">Profil</p>
 <div class="row">
     <div class="col-9">
         <div class="frame">

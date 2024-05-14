@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../../services/UserService';
+import { userService } from '../../services/userService';
+import {MatCardModule} from '@angular/material/card';
+
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,MatCardModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
@@ -16,7 +18,7 @@ export class ProfileComponent implements OnInit {
   lastName: string = "";
   phone: string = "";
 
-  constructor(private userService: UserService) {
+  constructor(private userService: userService) {
   }
 
   ngOnInit(): void {

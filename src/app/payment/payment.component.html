@@ -1,5 +1,134 @@
-<p>Frais de concours</p>
+<div class="container">
+<h2 class="title">Frais de concours</h2>
 <div class="row">
+    <!--<div class=" mod frame text-white col-md-9"></div>-->
+        <div class="container col-md-12">
+            <div class="p-3 text-center bg-body-tertiary rounded-3">
+                <p>Modalités de paiement</p>
+                <p>750 DH pour 2 sessions, 1.500 DH pour un nombre illimité :</p>
+                <ul style="list-style-type: none;">
+                    <li>Paiement par virement</li>
+                    <li>Paiement sur place</li>
+                    <li>"Pour paiment sur place veuillez contacter 0612345678"</li>
+                </ul>
+            
+            </div>
+          </div>
+    
+        <!-- <div class="col">
+            <div class="balance mx-4 frame text-black">
+                <p class="px-3 my-1 text-center" style="padding: 16px; background-color: lightslategrey; border-radius: 10px;"><button class="btn">Charger mon compte</button></p>
+                <p class="total text-center text-white bg-primary mx-4 my-1 p-1">Total: {{getTotal()}} MAD</p>
+            </div>
+        </div> -->
+    
+</div>
+
+<mat-card style="border-radius: 10px;">
+  <mat-card-title style="background-color: whitesmoke; padding: 20px; border-radius: 10px 10px 0 0 ;" align="center">
+    <h1>Paiment par virement</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="card-body" style="padding-top: 10px;">
+      <p>Veuillez nous envoyer vos virements sur le compte suivant :</p>
+      <ul>
+        <li>Banque : CIH Bank</li>
+        <li>Relevé d’identité bancaire : 230 810 594 293 822 101 460 075</li>
+        <li>Code SWIFT : CIHMMAMC</li>
+        <li>Bénéficiaire : Université internationale de Rabat</li>
+        <li>Veuillez saisir votre nom, prénom et code candidat (disponible sur votre espace candidat, vue « Tableau de bord »)</li>
+      </ul>
+      <p>Une fois le virement effectué, veuillez joindre le reçu de paiement ci-après :</p>
+
+      <form action="" method="post">
+        <div class="row md-6 p-2 m-1 border">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="montant">Montant du virement</label>
+              <select name="montant" id="montant" class="form-control" required>
+                <option value="">Choisissez un montant</option>
+                    <option value="750">750,00 MAD</option>
+                    <option value="1500">1 500,00 MAD</option>
+                </select>
+              
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="virement">Reçu de paiement</label>
+              <div class="mb-3">
+                <input class="form-control" type="file" id="formFile">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group my-2" align="center">
+              <button type="submit" class="button_ btn btn-primary ">Valider le virement</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+<!-- <div class="row" style="margin-top: 20px;">
+    <div class="card p-1" style="width: 800px;">
+        <h5 class="card-header" style="background-color: lightslategray;">Paiment par virement</h5>
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo">
+            <div class="card-body">
+              <p>Veuillez nous envoyer vos virements sur le compte suivant :</p>
+              <ul>
+                <li>Banque : CIH Bank</li>
+                <li>Relevé d’identité bancaire : 230 810 594 293 822 101 460 075</li>
+                <li>Code SWIFT : CIHMMAMC</li>
+                <li>Bénéficiaire : Université internationale de Rabat</li>
+                <li>Veuillez saisir votre nom, prénom et code candidat (disponible sur votre espace candidat, vue « Tableau de bord »)</li>
+              </ul>
+              <p>Une fois le virement effectué, veuillez joindre le reçu de paiement ci-après :</p>
+
+              <form action="" method="post">
+                <div class="row md-6 p-2 m-1 border">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="montant">Montant du virement</label>
+                      <select name="montant" id="montant" class="form-control" required>
+                        <option value="">Choisissez un montant</option>
+                            <option value="750">750,00 MAD</option>
+                            <option value="1500">1 500,00 MAD</option>
+                        </select>
+                      
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="virement">Reçu de paiement</label>
+                      <div class="mb-3">
+                        <input class="form-control" type="file" id="formFile">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group my-2">
+                      <button type="submit" class="button_ btn btn-primary ">Valider le virement</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+      </div>
+</div>
+<div class="row"></div>
+
+</div> -->
+
+
+<!-- <div class="row">
     <div class="col">
         <div class="frame">
             <p>Ajouter un paiement</p>
@@ -40,4 +169,4 @@
             <p class="text-center text-white bg-primary mx-4 p-1">{{getTotal()}} MAD</p>
         </div>
     </div>
-</div>
+</div> -->

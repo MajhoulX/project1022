@@ -1,25 +1,32 @@
+.mainContent{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
 .welcome {
-    font-weight: 700;
+    font-size: 2.5rem;
+    color: #444;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
     text-align: center;
-    margin-bottom: 45px;
 }
 
 .title {
     text-align: center;
-    margin-bottom: 20px; 
+    margin-bottom: 30px; 
 }
 
-.widgetsContainer {
-    background-color: #ececec;
-    width: 100%; 
-    max-width: 700px; 
-    margin: 0 auto; 
-    border-radius: 10px;
-    padding: 20px; 
-    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    position: relative;
-}
+// .widgetsContainer {
+//     background-color: #ececec;
+//     width: 100%; 
+//     max-width: 700px; 
+//     margin: 0 auto; 
+//     border-radius: 10px;
+//     padding: 20px; 
+//     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+//     box-sizing: border-box;
+//     position: relative;
+// }
 
 .formStyle {
     display: block;
