@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { User } from "../models/user";
+import { User, emptyUser } from "../models/user";
 
 @Injectable({
     providedIn: 'root'
@@ -7,15 +7,15 @@ import { User } from "../models/user";
 export class userService {
     private _user: User;
 
-    constructor(){
-        this._user = new User();
+    constructor() {
+        this._user = emptyUser;
     }
 
     get getUser(): User {
         return this._user;
     }
-    
-    updateUser(user: User){
+
+    updateUser(user: User) {
         this._user = user;
     }
 }
