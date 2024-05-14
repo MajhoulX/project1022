@@ -1,7 +1,7 @@
 import { Renderer2, AfterViewInit, Component, ElementRef, ViewChild, RendererStyleFlags2 } from '@angular/core';
 import { Country, countries } from '../../models/country';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../../services/UserService';
+import { userService } from '../../services/userService';
 import { User, civilities, educationSystems, educationLevels } from '../../models/user';
 import { Router } from '@angular/router';
 import { defaultIfEmpty, fromHtmlDate, toHtmlDate } from '../../utilities/utility';
@@ -46,7 +46,7 @@ export class Cursus1Component {
   residentCountryValid: boolean = true;
   residentCityValid: boolean = true;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: userService, private router: Router) {
     let user = userService.getUser;
     this.cin = user.cin;
     this.civility = user.civility;

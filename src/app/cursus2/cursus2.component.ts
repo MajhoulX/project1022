@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Serie, bacInstitutionTypes, educationSystems, studyLevels } from '../../models/user';
-import { UserService } from '../../services/UserService';
+import { userService } from '../../services/userService';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -32,7 +32,7 @@ export class Cursus2Component {
   listOfBacYears: string[];
 
 
-  constructor(private userService: UserService){
+  constructor(private userService: userService){
     this.bacObtained = userService.getUser.educationLevel == "Bac obtenu";
     this.massarCode = "";
     this.regionalExamNote = "";
