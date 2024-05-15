@@ -51,7 +51,6 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-
                                             <div class="fl-wrap fl-wrap-input"><label for="noteTerminalField"
                                                     class="fl-label">Moyenne générale du Bac (∗)</label><input
                                                     type="number" step="0.01" min="0" max="20" name="noteTerminalField"
@@ -61,39 +60,39 @@
                                         </div>
                                     </div>
                                     }@else {
-                                        <div class="col-md-6">
-                                            <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
 
-                                                <div class="styled-select clearfix">
-                                                    <div class="fl-wrap fl-wrap-select fl-is-required"><label
-                                                            for="serieField" class="fl-label">Série (∗)</label><select
-                                                            class="form-control required fl-select" name="serieField"
-                                                            id="serieField" [(ngModel)]="serie" (change)="onSerieChanged()">
-                                                            @for (item of listOfSeries; track $index) {
-                                                            <option value="{{item}}">{{item}}</option>
-                                                            }
-                                                        </select></div>
-                                                </div>
+                                            <div class="styled-select clearfix">
+                                                <div class="fl-wrap fl-wrap-select fl-is-required"><label
+                                                        for="serieField" class="fl-label">Série (∗)</label><select
+                                                        class="form-control required fl-select" name="serieField"
+                                                        id="serieField" [(ngModel)]="serie" (change)="onSerieChanged()">
+                                                        @for (item of listOfSeries; track $index) {
+                                                        <option value="{{item}}">{{item}}</option>
+                                                        }
+                                                    </select></div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="styled-select clearfix">
-                                                    <div class="fl-wrap fl-wrap-select fl-is-required"><label for="bacField"
-                                                            class="fl-label">Option (∗)</label><select
-                                                            class="form-control required fl-select" name="bacField"
-                                                            id="bacField" [(ngModel)]="option">
-                                                            @for (opt of listOfOptions; track $index) {
-                                                            <option value="{{opt}}">{{opt}}</option>
-                                                            }
-                                                        </select></div>
-                                                </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="styled-select clearfix">
+                                                <div class="fl-wrap fl-wrap-select fl-is-required"><label for="bacField"
+                                                        class="fl-label">Option (∗)</label><select
+                                                        class="form-control required fl-select" name="bacField"
+                                                        id="bacField" [(ngModel)]="option">
+                                                        @for (opt of listOfOptions; track $index) {
+                                                        <option value="{{opt}}">{{opt}}</option>
+                                                        }
+                                                    </select></div>
                                             </div>
                                         </div>
+                                    </div>
                                     }
 
-                                    
-                                    
+
+
                                     <div class="col-md-6" id="noteCCDiv">
                                         <div class="form-group">
 
@@ -127,7 +126,7 @@
                                                     [(ngModel)]="nationalExamNote"></div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-6">
                                         <div class="form-group" id="divCodeMassar">
 
@@ -157,7 +156,6 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-
                                             <div class="fl-wrap fl-wrap-input fl-is-required"><label
                                                     for="etablissementField" class="fl-label">Nom de votre
                                                     établissement (∗)</label><input type="text"

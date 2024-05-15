@@ -2,84 +2,41 @@ import { Payment } from "./payment";
 import { UserExam } from "./userExam";
 
 export class User {
-    id: string = "#2425-08882";
-    firstName: string = "Khalil";
-    lastName: string = "Hashim";
-    civility: string = "M";
-    phone: string = "0769052353";
-    email: string = "khahas@gmail.com";
-    cin: string = "J553295";
-    passportNumber: string = "X553295";
-    nationality: string = "Morocco";
-    address: string = "n145 imm 9 Inbiaat 3";
-    residentState: string = "Agadir";
-    residentCountry: string = "Morocco";
-    massar: string = "J54634";
-    educationLevel: string = "Bac obtenu";
-    educationSystem: string = "Marocain";
-    educationSystemCountry: string = "Marocain";
-    bacSerie: string = "Sciences Mathématiques";
-    bacOption: string = "Sciences Mathématiques A";
-    bacLevel: string = "Terminale";
-    bacInstitution: string = "Public";
-    bacInstitutionName: string = "EST Agadir";
-    bacAcquisitionYear: number | null = 2021;
-    bacAverageScore: number | null = 12;
-    seniorYearEnglishGrade: number | null = 12;
-    seniorYearMathematicsGrade: number | null = 12;
-    seniorYearPhysicsGrade: number | null = 12;
-    finalSchoolYearScore: number | null = 12;
-    regionalExamScore: number | null = 12;
-    nationalExamScore: number | null = 12;
-    password: string | null = "noidkhalil";
+    id: string = "";
+    firstName: string = "";
+    lastName: string = "";
+    civility: string = "";
+    phone: string = "";
+    email: string = "";
+    cin: string = "";
+    passportNumber: string = "";
+    nationality: string = "";
+    address: string = "";
+    residentState: string = "";
+    residentCountry: string = "";
+    massar: string = "";
+    educationLevel: string = "";
+    educationSystem: string = "";
+    educationSystemCountry: string = "";
+    bacSerie: string = "";
+    bacOption: string = "";
+    bacLevel: string = "";
+    bacInstitution: string = "";
+    bacInstitutionName: string = "";
+    bacAcquisitionYear: number | null = null;
+    bacAverageScore: number | null = null;
+    seniorYearEnglishGrade: number | null = null;
+    seniorYearMathematicsGrade: number | null = null;
+    seniorYearPhysicsGrade: number | null = null;
+    finalSchoolYearScore: number | null = null;
+    regionalExamScore: number | null = null;
+    nationalExamScore: number | null = null;
+    password: string | null = null;
     joined: Date = new Date();
-    birthDate: Date | null = new Date("02/28/2003");
-    examsRegistered: UserExam[] = [
-
-    ];
-    payments: Payment[] = [
-        new Payment(750),
-        new Payment(1500),
-        new Payment(1500)
-    ];
+    birthDate: Date | null = null;
+    examsRegistered: UserExam[] = [];
+    payments: Payment[] = [];
 };
-
-export const emptyUser: User = {
-    id: "",
-    firstName: "",
-    lastName: "",
-    civility: "",
-    phone: "",
-    email: "",
-    cin: "",
-    passportNumber: "",
-    nationality: "",
-    address: "",
-    residentState: "",
-    residentCountry: "",
-    massar: "",
-    educationLevel: "",
-    educationSystem: "",
-    educationSystemCountry: "",
-    bacSerie: "",
-    bacOption: "",
-    bacLevel: "",
-    bacInstitution: "",
-    bacInstitutionName: "",
-    bacAcquisitionYear: null,
-    bacAverageScore: null,
-    seniorYearEnglishGrade: null,
-    seniorYearMathematicsGrade: null,
-    seniorYearPhysicsGrade: null,
-    finalSchoolYearScore: null,
-    regionalExamScore: null,
-    nationalExamScore: null,
-    password: null,
-    joined: new Date(),
-    birthDate: null,
-    examsRegistered: [],
-    payments: []
-}
 
 export class Serie {
     name: string;
@@ -89,7 +46,6 @@ export class Serie {
         this.options = options;
     }
 };
-
 
 export class EducationSystem{
     name: string;

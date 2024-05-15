@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { User, emptyUser } from "../models/user";
-import { Console } from "console";
+import { User } from "../models/user";
 import { HttpClient } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 
@@ -14,14 +13,19 @@ export class UserService {
     constructor(private http: HttpClient) {
     }
 
-    getUser(): Observable<User> {
-        return of(this._user);
-        //return this.http.get<User>(this.endpoint);
+    getLocalUser(): User {
+        return this._user;
     }
 
-    setUser(user: User) : Observable<any> {
+    updateLocalUser(user: User) {
         this._user = user;
-        return of();
-        //return this.http.post<any>(this.endpoint + "/0", user);
+    }
+
+    getUserFromAPI(): Observable<User> {
+        return this.http.get<User>(this.endpoint);
+    }
+
+    updateUserInAPI(user: User): Observable<any> {
+        return this.http.post<any>(this.endpoint + "/0", user);
     }
 }

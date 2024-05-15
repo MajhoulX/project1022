@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
   }
 
   populateData(): void {
-    this.userService.getUser()
+    this.userService.getUserFromAPI()
       .subscribe(user => {
         this.email = user.email;
         this.firstName = user.firstName;
@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
       this._user.lastName = this.lastName;
       this._user.phone = this.phone;
 
-      this.userService.setUser(this._user)
+      this.userService.updateUserInAPI(this._user)
         .subscribe(() => {
           console.log("sent for update")
         });

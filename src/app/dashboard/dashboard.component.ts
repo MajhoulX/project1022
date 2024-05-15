@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(user => {
+    this.userService.getUserFromAPI().subscribe(user => {
       this.user = user;
       this.sessions = user.examsRegistered.map(ex => ex.exam);
     })
