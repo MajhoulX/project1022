@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Serie, bacInstitutionTypes, educationSystems, studyLevels } from '../../models/user';
 import { UserService } from '../../services/UserService';
 import { FormsModule } from '@angular/forms';
@@ -10,49 +10,35 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './cursus2.component.html',
   styleUrl: './cursus2.component.scss'
 })
-export class Cursus2Component {
-  bacObtained:boolean;
-  massarCode: string;
-  serie: string;
-  bacYear: string;
-  regionalExamNote: string;
-  nationalExamNote: string;
-  institutionType: string;
-  finalYearGrade: string;
-  averageGrade: string;
-  studyLevel: string;
-  institutionName: string;
-  option:string;
-  acceptedTerms: boolean;
-  
+export class Cursus2Component implements OnInit {
+  bacObtained: boolean = false;
+  massarCode: string = "";
+  serie: string = "Choisissez une série";
+  bacYear: string = "Année d'obtention du Bac";
+  regionalExamNote: string = "";
+  nationalExamNote: string = "";
+  institutionType: string = "Type d'établissement";
+  finalYearGrade: string = "";
+  averageGrade: string = "";
+  studyLevel: string = "Niveau d'étude";
+  institutionName: string = "";
+  option: string = "Choisissez une option";
+  acceptedTerms: boolean = false;
+
   listOfSeries: string[];
   listOfInstitutions: string[];
   listOfOptions: string[];
   listOfStudyLevels: string[];
-  listOfBacYears: string[];
+  listOfBacYears: string[] = ["Année d'obtention du Bac"];
 
 
-  constructor(private userService: UserService){
-    this.bacObtained = userService.getUser.educationLevel == "Bac obtenu";
-    this.massarCode = "";
-    this.regionalExamNote = "";
-    this.averageGrade = "";
-    this.finalYearGrade = "";
-    this.nationalExamNote = "";
-    this.institutionName = "";
-    this.acceptedTerms = false;
-    this.bacYear = "Année d'obtention du Bac";
-    this.serie = "Choisissez une série";
-    this.institutionType = "Type d'établissement";
-    this.studyLevel = "Niveau d'étude";
-    this.option = "Choisissez une option";
-    this.listOfBacYears = ["Année d'obtention du Bac"];
+  constructor(private userService: UserService) {
+
 
     let maxYear: number = new Date().getFullYear();
-    for(let i = maxYear; i >= 2000; i--){
+    for (let i = maxYear; i >= 2000; i--) {
       this.listOfBacYears.push(i.toString());
     }
-
 
     this.listOfSeries = ["Choisissez une série"].concat(educationSystems.flatMap(s => s.series.map(ss => ss.name)));
     this.listOfStudyLevels = ["Niveau d'étude"].concat(studyLevels);
@@ -61,10 +47,17 @@ export class Cursus2Component {
     this.onSerieChanged();
   }
 
-  onSerieChanged(){
+  ngOnInit(): void {
+    this.userService.getUser()
+      .subscribe(user => {
+        this.bacObtained = user.educationLevel == "Bac obtenu";
+      })
+  }
+
+  onSerieChanged() {
     let currentSerie: Serie | undefined = educationSystems.flatMap(ed => ed.series).find(s => s.name == this.serie);
     this.listOfOptions = ["Choisissez une option"];
-    if(currentSerie){
+    if (currentSerie) {
       this.listOfOptions = this.listOfOptions.concat(currentSerie.options);
     }
   }

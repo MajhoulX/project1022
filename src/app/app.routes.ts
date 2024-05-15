@@ -8,7 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProgramsComponent } from './programs/programs.component';
 import { ChoiceComponent } from './choice/choice.component';
-import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
+import { PortalLayoutComponent as PortalLayoutComponent } from './portal-layout/portal-layout.component';
 import { Cursus1Component } from './cursus1/cursus1.component';
 import { Cursus2Component } from './cursus2/cursus2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,17 +19,17 @@ export const routes: Routes = [
     { path: 'step1', component: Cursus1Component },
     { path: 'step2', component: Cursus2Component },
     {
-        path: 'dashboard',
-        component: DashboardLayoutComponent,
+        path: 'portal',
+        component: PortalLayoutComponent,
         children: [
-            { path: '', component: DashboardComponent },
+            { path: 'dashboard', component: DashboardComponent },
             { path: 'choix', component: ChoiceComponent },
             { path: 'programmes', component: ProgramsComponent },
             { path: 'inscription', component: RegistrationComponent },
             { path: 'profil', component: ProfileComponent },
             { path: 'cursus', component: CurriculumComponent },
             { path: 'frais', component: PaymentComponent },
-            { path: '**', redirectTo: '/dashboard/' }
+            { path: '**', redirectTo: '/portal/dashboard' }
         ]
     },
     { path: 'error', component: NotfoundComponent },

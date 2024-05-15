@@ -13,12 +13,15 @@ import { UserService } from '../../services/UserService';
 })
 export class CurriculumComponent implements OnInit {
   stages: Stage[] = stages;
-  user: User;
+  user: User | null = null;
 
   constructor(private userService: UserService) {
-    this.user = this.userService.getUser;
   }
 
   ngOnInit(): void {
+    this.userService.getUser()
+      .subscribe(user => {
+        this.user = user;
+      })
   }
 }

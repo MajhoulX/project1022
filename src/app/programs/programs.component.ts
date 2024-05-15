@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Faculty, faculties } from '../../models/faculty';
 import { Exam, ExamType } from '../../models/exam';
 import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
@@ -15,21 +15,25 @@ import {MatExpansionModule} from '@angular/material/expansion';
     styleUrl: './programs.component.scss',
     imports: [PaymentBalanceComponent,MatExpansionModule]
 })
-export class ProgramsComponent {
+export class ProgramsComponent implements OnInit {
   faculties: Faculty[];
   constructor(private userService:UserService, @Inject(DOCUMENT) private doc:Document){
     this.faculties = faculties; 
   }
 
+  ngOnInit(): void {
+    //throw new Error('Method not implemented.');
+  }
+
   addToRegisteredExams(examName: string){
-    const e = this.doc.getElementById(examName) as HTMLSelectElement;
-    const ex = faculties.flatMap(f => f.fieldOfStudies.flatMap(s => s.exams));
-    const cex = ex.find(exx => exx.id.toString() == e.value)!;
-    if(cex){
-      const n = this.userService.getUser.examsRegistered.push(new UserExam(cex));
-      console.log('added ' + this.userService.getUser.examsRegistered.length);
-    }else{
-      console.log("invalid option");
-    }
+    // const e = this.doc.getElementById(examName) as HTMLSelectElement;
+    // const ex = faculties.flatMap(f => f.fieldOfStudies.flatMap(s => s.exams));
+    // const cex = ex.find(exx => exx.id.toString() == e.value)!;
+    // if(cex){
+    //   const n = this.userService.getUser.examsRegistered.push(new UserExam(cex));
+    //   console.log('added ' + this.userService.getUser.examsRegistered.length);
+    // }else{
+    //   console.log("invalid option");
+    // }
   }
 }

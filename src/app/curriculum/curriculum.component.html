@@ -8,39 +8,39 @@
                 <tbody>
                     <tr>
                         <td>Nom complete</td>
-                        <td class="fw-bold" style="text-transform: uppercase;">{{user.civility}}. {{user.firstName}} {{user.lastName}}</td>
+                        <td class="fw-bold" style="text-transform: uppercase;">{{user?.civility}}. {{user?.firstName}} {{user?.lastName}}</td>
                     </tr>
                     <tr>
                         <td>Code étudiant</td>
-                        <td class="fw-bold">{{user.id}}</td>
+                        <td class="fw-bold">{{user?.id}}</td>
                     </tr>
                     <tr>
                         <td>Adresse Email</td>
-                        <td>{{user.email}}</td>
+                        <td>{{user?.email}}</td>
                     </tr>
                     <tr>
                         <td>Téléphone</td>
-                        <td>{{user.phone}}</td>
+                        <td>{{user?.phone}}</td>
                     </tr>
                     <tr>
                         <td>CIN</td>
-                        <td>{{user.cin}}</td>
+                        <td>{{user?.cin}}</td>
                     </tr>
                     <tr>
                         <td>Date de naissance</td>
-                        <td>{{user.birthDate?.toLocaleDateString()}}</td>
+                        <td>{{user?.birthDate?.toLocaleDateString}}</td>
                     </tr>
                     <tr>
                         <td>Nationalité</td>
-                        <td>{{user.nationality}}</td>
+                        <td>{{user?.nationality}}</td>
                     </tr>
                     <tr>
                         <td>Résidence</td>
-                        <td>{{user.residentState}} - {{user.residentCountry}}</td>
+                        <td>{{user?.residentState}} - {{user?.residentCountry}}</td>
                     </tr>
                     <tr>
                         <td>Adresse</td>
-                        <td>{{user.address}}</td>
+                        <td>{{user?.address}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -60,23 +60,23 @@
                 <tbody>
                     <tr>
                         <td>Système d'étude</td>
-                        <td>{{user.educationSystem}} | Massar: {{user.massar}}</td>
+                        <td>{{user?.educationSystem}} | Massar: {{user?.massar}}</td>
                     </tr>
                     <tr>
                         <td>Série</td>
-                        <td>{{user.bacSerie}}</td>
+                        <td>{{user?.bacSerie}}</td>
                     </tr>
                     <tr>
                         <td>Option</td>
-                        <td>{{user.bacOption}}</td>
+                        <td>{{user?.bacOption}}</td>
                     </tr>
                     <tr>
                         <td>Niveau d'études</td>
-                        <td>{{user.bacLevel}}</td>
+                        <td>{{user?.bacLevel}}</td>
                     </tr>
                     <tr>
                         <td>Établissement</td>
-                        <td>{{user.bacInstitution}}</td>
+                        <td>{{user?.bacInstitution}}</td>
                     </tr>
                 </tbody>
             </table>

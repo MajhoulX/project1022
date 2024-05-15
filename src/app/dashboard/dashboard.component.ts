@@ -14,15 +14,17 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   stages: Stage[] = stages;
-  user: User | undefined;
+  user: User | null = null;
   sessions: Exam[] = [];
 
-  constructor(private userService:UserService){
+  constructor(private userService: UserService) {
 
   }
 
   ngOnInit(): void {
-    this.user = this.userService.getUser;
-    this.sessions = this.user.examsRegistered.map(ex => ex.exam);
+    this.userService.getUser().subscribe(user => {
+      this.user = user;
+      this.sessions = user.examsRegistered.map(ex => ex.exam);
+    })
   }
 }
