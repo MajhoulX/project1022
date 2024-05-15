@@ -2,12 +2,12 @@
     <h2 class="title">Liste des programmes</h2>
     @for (faculty of faculties; track $index){
     <div class="product-container">
-    <div class="product" data-name="p-1">
+    <div class="product">
         <h3 class="product-name">{{faculty.name}}</h3>
         <mat-expansion-panel hideToggle>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <p class="text pt-1">Programmes disponibles</p>
+                <p style="padding: 5px; padding-top: 18px;">Programmes disponibles</p>
               </mat-panel-title>
             </mat-expansion-panel-header>
             @for (studyField of faculty.fieldOfStudies; track $index) {

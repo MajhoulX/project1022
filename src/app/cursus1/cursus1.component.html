@@ -9,7 +9,7 @@
 
             <div class="col-md-8 right">
                 <div class="container">
-                    <header>Bienvenue</header>
+                    <header class="pt-3">Bienvenue</header>
                     <form action="">
                         <div class="form-first">
                             <div class="details">
@@ -20,7 +20,7 @@
                                         @for (cv of civilityValues; track $index) {
                                         <label class="container_radio mr-3">{{cv}}
                                             <input type="radio" [(ngModel)]="civility" name="civility"
-                                                value="{{cv}}" id="moyYes" class="required">
+                                                value="{{cv}}" id="moyYes" class="required" style="transform: scale(1.5); border: 1px;">
                                             <span class="checkmark"></span>
                                         </label>
                                         }
@@ -158,13 +158,14 @@
                                         <label [style.color]="(educationLevelValid ? 'black' : 'red')">Niveau d'études (∗) :</label>
                                         @for (lvl of educationLevels; track $index) {
                                         <label class="container_radio mr-3">{{lvl}}
-                                            <input [(ngModel)]="educationLevel" type="radio" name="obtenueField" value="{{lvl}}" class="required">
-                                            <span class="checkmark"></span>
+                                            <input [(ngModel)]="educationLevel" type="radio" name="obtenueField" value="{{lvl}}" class="required" 
+                                            style="transform: scale(0.5);">
+                                            
                                         </label>
                                         }
                                     </div>
                                 </div>
-                                <div class="signin">
+                                <div class="signin pb-3">
                                     <button type="button" class="submit" value="" (click)="onNext()">Suivant</button>
                                 </div>
                             </div>

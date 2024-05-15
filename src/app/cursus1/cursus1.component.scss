@@ -41,7 +41,6 @@ body {
 
 .row {
     width: 1200px;
-    height: 700px;
     border-radius: 10px;
     background: #fff;
     padding: 0px;
@@ -127,8 +126,9 @@ i {
 }
 
 .radio_input input[type="radio"] {
-    margin-right: 20px;
+    margin-right: 40px;
     margin-left: 10px;
+    
 }
 
 .form-group label {
