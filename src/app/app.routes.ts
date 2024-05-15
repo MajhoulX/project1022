@@ -33,5 +33,5 @@ export const routes: Routes = [
         ]
     },
     { path: 'error', component: NotfoundComponent },
-    { path: '**', redirectTo: "/error" }
+    { path: '**', redirectTo: "/portal" }
 ];
