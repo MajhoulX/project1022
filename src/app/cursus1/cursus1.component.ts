@@ -13,10 +13,11 @@ import { defaultIfEmpty, fromHtmlDate, toHtmlDate } from '../../utilities/utilit
   templateUrl: './cursus1.component.html',
   styleUrl: './cursus1.component.scss'
 })
-export class Cursus1Component implements OnInit {
+export class Cursus1Component {
   private _user: User | null = null;
 
-  countries: string[] = [];
+  residentCountries: string[] = [];
+  nationalities: string[] = [];
   educationSystemCountries: string[] = [];
   cities: string[] = [];
   civilityValues: string[] = [];
@@ -49,70 +50,42 @@ export class Cursus1Component implements OnInit {
   residentCityValid: boolean = true;
 
   constructor(private userService: UserService, private router: Router) {
-
-  }
-
-  ngOnInit(): void {
-    this.populateUser();
-  }
-
-  populateUser(): void {
-    this.userService.getUser()
-      .subscribe(user => {
-        this.cin = user.cin;
-        this.civility = user.civility;
-        this.address = user.address;
-        this.edLevel = user.educationLevel;
-        this.nationality = defaultIfEmpty(user.nationality, "Nationalité");
-        this.educationSystem = defaultIfEmpty(user.educationSystem, "Système d'étude");
-        this.passportNumber = user.passportNumber;
-        if (user.birthDate) {
-          this.birthDate = toHtmlDate(user.birthDate);
-        } else {
-          this.birthDate = "";
-        }
-        this.residentCountry = user.residentCountry;
-
-        this.cities = [];
-        this.civilityValues = civilities;
-        this.onResidenceCountryChanged();
-        this.countries = ["Nationalité"].concat(countries.map(c => c.name));
-        this.educationSystemCountries = ["Pays du système d'étude"].concat(countries.map(c => c.name));
-        this.educationSystems = ["Système d'étude"].concat(educationSystems.map(ed => ed.name));
-        this.city = defaultIfEmpty(user.residentState, "Ville de résidence");
-        this.educationSystemCountry = defaultIfEmpty(user.educationSystemCountry, "Pays du système d'étude");
-        this.educationLevels = educationLevels;
-        this.educationLevel = "";
-        this._user = user;
-      });
+    this.cities = [];
+    this.civilityValues = civilities;
+    this.onResidenceCountryChanged();
+    this.nationalities = ["Nationalité"].concat(countries.map(c => c.name));
+    this.residentCountries = ["Pays de résidence"].concat(countries.map(c => c.name));
+    this.educationSystemCountries = ["Pays du système d'étude"].concat(countries.map(c => c.name));
+    this.educationSystems = ["Système d'étude"].concat(educationSystems.map(ed => ed.name));
+    this.educationLevels = educationLevels;
+    this.educationSystem = this.educationSystems[0];
+    this.residentCountry = this.residentCountries[0];
+    this.nationality = this.nationalities[0];
   }
 
   updateUser(): void {
-    if (this._user) {
-      this._user.address = this.address;
-      this._user.nationality = this.nationality;
-      this._user.educationSystem = this.educationSystem;
-      this._user.educationLevel = this.educationLevel;
-      this._user.civility = this.civility;
-      this._user.birthDate = fromHtmlDate(this.birthDate)!;
-      this._user.residentCountry = this.residentCountry;
-      this._user.residentState = this.city;
+    const user = new User();
+    user.address = this.address;
+    user.nationality = this.nationality;
+    user.educationSystem = this.educationSystem;
+    user.educationLevel = this.educationLevel;
+    user.civility = this.civility;
+    user.birthDate = fromHtmlDate(this.birthDate)!;
+    user.residentCountry = this.residentCountry;
+    user.residentState = this.city;
 
-      if (this.nationality == "Morocco") {
-        this._user.cin = this.cin;
-      } else {
-        this._user.passportNumber = this.passportNumber;
-      }
-
-      if (this.educationSystem == "Etranger") {
-        this._user.educationSystemCountry = this.educationSystemCountry;
-      }
-
-      this.userService.setUser(this._user)
-      .subscribe(_ => {
-        console.log("updated user data");
-      })
+    if (this.nationality == "Morocco") {
+      user.cin = this.cin;
+    } else {
+      user.passportNumber = this.passportNumber;
     }
+
+    if (this.educationSystem == "Etranger") {
+      user.educationSystemCountry = this.educationSystemCountry;
+    }
+
+    console.log(user);
+    this.userService.updateLocalUser(user);
   }
 
   onResidenceCountryChanged() {

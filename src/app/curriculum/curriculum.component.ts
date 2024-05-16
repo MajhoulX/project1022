@@ -19,7 +19,7 @@ export class CurriculumComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUser()
+    this.userService.getUserFromAPI()
       .subscribe(user => {
         this.user = user;
       })

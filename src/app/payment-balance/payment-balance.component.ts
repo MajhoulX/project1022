@@ -16,7 +16,7 @@ export class PaymentBalanceComponent implements OnInit {
 
   ngOnInit(): void {
     let sum: number = 0;
-    this.userService.getUser()
+    this.userService.getUserFromAPI()
       .subscribe(user => {
         user.payments.forEach(p => {
           sum += p.amount;

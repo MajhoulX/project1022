@@ -35,7 +35,7 @@
                                                     <select class="form-control required fl-select"
                                                         name="nationaliteField" id="nationaliteField"
                                                         [(ngModel)]="nationality">
-                                                        @for (country of countries; track $index) {
+                                                        @for (country of nationalities; track $index) {
                                                         <option value="{{country}}">{{country}}</option>
                                                         }
                                                     </select>
@@ -45,15 +45,15 @@
                                     </div>
                                     <div class="col-md-6" id="divCIN">
                                         <div class="form-group">
-                                            @if(true){
-                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField"
+                                            @if(nationality == "Morocco"){
+                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField" [style.color]="(cinValid ? 'black' : 'red')"
                                                     class="fl-label">N° CIN (∗)</label><input type="text"
                                                     name="cinField" id="cinField" class="form-control required fl-input"
                                                     [(ngModel)]="cin" placeholder="N° CIN (∗)" maxlength="8"></div>
                                             }@else{
-                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="cinField" [style.color]="(passportNumberValid ? 'black' : 'red')"
+                                            <div class="fl-wrap fl-wrap-input fl-is-required"><label for="passportField" [style.color]="(passportNumberValid ? 'black' : 'red')"
                                                     class="fl-label">Passport (∗)</label><input type="text"
-                                                    name="cinField" id="cinField" class="form-control required fl-input"
+                                                    name="passportField" id="passportField" class="form-control required fl-input"
                                                     [(ngModel)]="passportNumber" placeholder="N° Passport (∗)"
                                                     maxlength="8"></div>
                                             }
@@ -69,7 +69,7 @@
                                                         [(ngModel)]="residentCountry"
                                                         (change)="onResidenceCountryChanged()">
                                                         <option value="Pays de résidence" selected>Pays de résidence</option>
-                                                        @for (country of countries; track $index) {
+                                                        @for (country of residentCountries; track $index) {
                                                         <option value="{{country}}">{{country}}</option>
                                                         }
                                                     </select>
@@ -110,7 +110,7 @@
                                             <div class="fl-wrap fl-wrap-input fl-is-required"><label [style.color]="(birthDateValid ? 'black' : 'red')"
                                                     for="dateNaissanceField" class="fl-label">Date de naissance
                                                     (∗)</label><input type="date" name="dateNaissanceField"
-                                                    id="dateNaissanceField"
+                                                    id="dateNaissanceField" [(ngModel)]="birthDate"
                                                     class="form-control datepicker required fl-input" autocomplete="off"
                                                     placeholder="Date de naissance (∗)"></div>
                                         </div>
