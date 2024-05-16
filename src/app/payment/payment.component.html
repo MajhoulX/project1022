@@ -2,26 +2,26 @@
 <h2 class="title">Frais de concours</h2>
 <div class="row">
     <!--<div class=" mod frame text-white col-md-9"></div>-->
-        <div class="container col-md-12">
-            <div class="p-3 text-center bg-body-tertiary rounded-3">
-                <p>Modalités de paiement</p>
-                <p>750 DH pour 2 sessions, 1.500 DH pour un nombre illimité :</p>
-                <ul style="list-style-type: none;">
-                    <li>Paiement par virement</li>
-                    <li>Paiement sur place</li>
-                    <li>"Pour paiment sur place veuillez contacter 0612345678"</li>
-                </ul>
-            
-            </div>
-          </div>
-    
+    <mat-card class="p-3 text-center rounded-3 my-4">
+      <mat-card-content>
+        <div >
+          <p>Modalités de paiement</p>
+          <p>750 DH pour 2 sessions, 1.500 DH pour un nombre illimité :</p>
+          <ul style="list-style-type: none;">
+              <li>Paiement par virement</li>
+              <li>Paiement sur place</li>
+              <li>"Pour paiment sur place veuillez contacter 0612345678"</li>
+          </ul>
+      
+      </div>
+      </mat-card-content>
+    </mat-card>
         <!-- <div class="col">
             <div class="balance mx-4 frame text-black">
                 <p class="px-3 my-1 text-center" style="padding: 16px; background-color: lightslategrey; border-radius: 10px;"><button class="btn">Charger mon compte</button></p>
                 <p class="total text-center text-white bg-primary mx-4 my-1 p-1">Total: {{getTotal()}} MAD</p>
             </div>
         </div> -->
-    
 </div>
 
 <mat-card style="border-radius: 10px;">
@@ -55,9 +55,9 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="virement">Reçu de paiement</label>
+              <label for="virement" aria-required="true">Reçu de paiement</label>
               <div class="mb-3">
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile" required>
               </div>
             </div>
           </div>
