@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { User } from "../models/user";
 import { HttpClient } from "@angular/common/http";
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -26,6 +26,8 @@ export class UserService {
     }
 
     updateUserInAPI(user: User): Observable<any> {
-        return this.http.post<any>(this.endpoint + "/0", user);
+        return this.http.post<any>(this.endpoint, JSON.stringify(user), {
+            headers: { "Content-Type": "application/json" }
+        });
     }
 }

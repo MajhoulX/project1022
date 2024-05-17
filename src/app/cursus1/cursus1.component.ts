@@ -84,7 +84,6 @@ export class Cursus1Component {
       user.educationSystemCountry = this.educationSystemCountry;
     }
 
-    console.log(user);
     this.userService.updateLocalUser(user);
   }
 

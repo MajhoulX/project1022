@@ -7,8 +7,8 @@
                 </div>
             </div>
 
-            <div class="col-md-8 right">
-                <div class="container">
+            <div class="col-md-8">
+                <header class="container">
                     <header class="pt-3">Bienvenue</header>
                     <form action="post">
                         <div class="form-first">
@@ -59,40 +59,9 @@
                                                     [(ngModel)]="averageGrade"></div>
                                         </div>
                                     </div>
-                                    }@else {
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-
-                                            <div class="styled-select clearfix">
-                                                <div class="fl-wrap fl-wrap-select fl-is-required"><label
-                                                        for="serieField" class="fl-label">Série (∗)</label><select
-                                                        class="form-control required fl-select" name="serieField"
-                                                        id="serieField" [(ngModel)]="serie" (change)="onSerieChanged()">
-                                                        @for (item of listOfSeries; track $index) {
-                                                        <option value="{{item}}">{{item}}</option>
-                                                        }
-                                                    </select></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="styled-select clearfix">
-                                                <div class="fl-wrap fl-wrap-select fl-is-required"><label for="bacField"
-                                                        class="fl-label">Option (∗)</label><select
-                                                        class="form-control required fl-select" name="bacField"
-                                                        id="bacField" [(ngModel)]="option">
-                                                        @for (opt of listOfOptions; track $index) {
-                                                        <option value="{{opt}}">{{opt}}</option>
-                                                        }
-                                                    </select></div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     }
 
-
-
+                                    @if(studySystem == "Marocain" && bacObtained){
                                     <div class="col-md-6" id="noteCCDiv">
                                         <div class="form-group">
 
@@ -126,7 +95,38 @@
                                                     [(ngModel)]="nationalExamNote"></div>
                                         </div>
                                     </div>
+                                    }
 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="styled-select clearfix">
+                                                <div class="fl-wrap fl-wrap-select fl-is-required"><label
+                                                        for="serieField" class="fl-label">Série (∗)</label><select
+                                                        class="form-control required fl-select" name="serieField"
+                                                        id="serieField" [(ngModel)]="serie" (change)="onSerieChanged()">
+                                                        @for (item of listOfSeries; track $index) {
+                                                        <option value="{{item}}">{{item}}</option>
+                                                        }
+                                                    </select></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="styled-select clearfix">
+                                                <div class="fl-wrap fl-wrap-select fl-is-required"><label for="bacField"
+                                                        class="fl-label">Option (∗)</label><select
+                                                        class="form-control required fl-select" name="bacField"
+                                                        id="bacField" [(ngModel)]="option">
+                                                        @for (opt of listOfOptions; track $index) {
+                                                        <option value="{{opt}}">{{opt}}</option>
+                                                        }
+                                                    </select></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @if(studySystem == "Marocain"){
                                     <div class="col-md-6">
                                         <div class="form-group" id="divCodeMassar">
 
@@ -134,9 +134,11 @@
                                                     class="fl-label">Code massar</label><input type="text"
                                                     name="massarField" id="massarField"
                                                     class="form-control fl-input required" placeholder="Code massar"
-                                                    maxlength="10" [(ngModel)]="massarCode"></div>
+                                                    maxlength="10" [(ngModel)]="massarCode">
+                                            </div>
                                         </div>
                                     </div>
+                                    }
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -179,5 +181,11 @@
                             </div>
                         </div>
                         <div class="signin pb-3">
-                            <input type="submit" class="submit " value="Envoyer">
+                            <button type="button" class="submit " (click)="uploadUser()">Envoyer</button>
                         </div>
+                    </form>
+                </header>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,22 +5,25 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { Router } from '@angular/router';
+import { Observer } from 'rxjs';
 
 @Component({
   selector: 'app-cursus2',
   standalone: true,
-  imports: [FormsModule, MatIconModule, MatInputModule, MatFormFieldModule],
+  imports: [FormsModule, MatIconModule, MatInputModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './cursus2.component.html',
   styleUrl: './cursus2.component.scss'
 })
 export class Cursus2Component {
   bacObtained: boolean;
   massarCode: string = "";
-  serie: string = "Choisissez une série";
+  serie: string;
   bacYear: string = "Année d'obtention du Bac";
   regionalExamNote: string = "";
   nationalExamNote: string = "";
-  institutionType: string = "Type d'établissement";
+  institutionType: string;
   finalYearGrade: string = "";
   averageGrade: string = "";
   studyLevel: string;
@@ -37,16 +40,17 @@ export class Cursus2Component {
   listOfStudyLevels: string[];
   listOfBacYears: string[] = ["Année d'obtention du Bac"];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     let user = userService.getLocalUser();
+
+    if(user.educationLevel == "" || user.educationSystem == ""){
+      router.navigateByUrl("step1");
+    }
+    
     this.studyLevel = user.educationLevel;
     this.studySystem = user.educationSystem;
-    // this.bacObtained = user.bacLevel == educationLevels[0]
-    this.bacObtained = true;
 
-    if(!this.studySystem || this.studySystem == ""){
-      this.studySystem = "Etranger";
-    }
+    this.bacObtained = user.bacLevel == educationLevels[0]
 
     let maxYear: number = new Date().getFullYear();
     for (let i = maxYear; i >= 2000; i--) {
@@ -71,5 +75,27 @@ export class Cursus2Component {
     if (currentSerie) {
       this.listOfOptions = this.listOfOptions.concat(currentSerie.options);
     }
+  }
+
+  uploadUser(){
+    let user = this.userService.getLocalUser();
+    user.bacAcquisitionYear = Number(this.bacYear);
+    user.bacSerie = this.serie;
+    user.bacOption = this.option;
+    user.regionalExamScore = Number(this.regionalExamNote);
+    user.nationalExamScore = Number(this.nationalExamNote);
+    user.bacAverageScore = Number(this.averageGrade);
+    user.finalSchoolYearScore = Number(this.finalYearGrade);
+    user.bacInstitution = this.institutionType;
+    user.bacInstitutionName = this.institutionName;
+    user.massar = this.massarCode;
+    this.userService.updateUserInAPI(user).subscribe(
+      (s) => {
+        this.router.navigateByUrl("portal/dashboard")
+      },
+      onerror =>{
+        console.log(onerror + " error");
+      }
+    );
   }
 }
