@@ -10,23 +10,25 @@
             <div class="col-md-6 right">
                 <div class="input-box">
                     <header>Connexion</header>
-                    <form id="loginForm" method="POST">
-                        <div class="input-field">
-                            <input type="text" class="input" id="email" name="email" required autocomplete="off">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="password" class="input" id="password" name="password" required>
-                            <label for="password">Mot de passe</label>
-                            <a id="forgotPassword">Mot de passe oublié ?</a>
-                        </div>
-                        <div class="input-field">
-                            <input type="submit" class="submit" value="Connexion">
-                        </div>
-                    </form>
-                    <div class="signup">
-                        <span>Vous n'avez pas de compte ? <a href="/signup">Créer un compte</a></span>
-                    </div>
+                    <mat-form-field [style.width]="'100%'">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="pat@example.com" [formControl]="email"
+                            (blur)="updateEmailErrorMessage()" required>
+                        @if (email.invalid) {
+                        <mat-error>{{emailErrorMessage}}</mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field [style.width]="'100%'">
+                        <mat-label>Password</mat-label>
+                        <input matInput [formControl]="password" ((blur))="updatePasswordErrorMessage()" required>
+                        @if (password.invalid) {
+                        <mat-error>{{passwordErrorMessage}}</mat-error>
+                        }
+                    </mat-form-field>
+                    <!-- <a id="forgotPassword">Mot de passe oublié ?</a> -->
+                    <button #loginbtn mat-flat-button [disabled]=!canLogin color="primary" [style.width]="'100%'"
+                        (click)="onLogin()">Login</button>
+                    <p style="margin-top: 16px;">Vous n'avez pas de compte ? <a href="/signup">Créer un compte</a></p>
                 </div>
             </div>
         </div>

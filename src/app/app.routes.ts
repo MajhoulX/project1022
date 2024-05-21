@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Router, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
@@ -12,6 +12,8 @@ import { PortalLayoutComponent as PortalLayoutComponent } from './portal-layout/
 import { Cursus1Component } from './cursus1/cursus1.component';
 import { Cursus2Component } from './cursus2/cursus2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { inject } from '@angular/core';
+import { AuthenticationService } from '../services/AuthenticationService';
 
 export const routes: Routes = [
     { path: 'signup', component: SignupComponent },
@@ -21,6 +23,18 @@ export const routes: Routes = [
     {
         path: 'portal',
         component: PortalLayoutComponent,
+        canActivate: [() => {
+            const srv = inject(AuthenticationService);
+            
+            srv.isAuthenticated().subscribe(
+                (it) =>{
+                    return true;
+                },
+                (error) =>{
+                    return false;
+                }
+            );
+        }],
         children: [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'choix', component: ChoiceComponent },
