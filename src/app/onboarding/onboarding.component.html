@@ -1,0 +1,210 @@
+<div id="wrapper">
+    <div class="container" style="height: 100%;">
+        <div style="display: flex; height: 100%; justify-content: center;">
+            <div class="row" id="inner-wrapper">
+                <div class="col-4" id="side-image">
+                    <p>Join the community of musicians <i>- Fanan</i></p>
+                </div>
+
+                <div class="col-8" id="form-wrapper">
+                    <p>Bienvenue</p>
+                    <p>Veuillez renseigner les informations demandées</p>
+                    <form [formGroup]="form">
+                        <mat-stepper [style.background-color]="'aliceblue'" linear>
+                            <mat-step formGroupName="step1" label="Step 1" [completed]="form.get('step1')?.valid">
+                                <div
+                                    style="display: grid; grid-template-rows: 1f 1f 1f 1f 1f; grid-template-columns: 1f 1f; column-gap: 16px;">
+                                    <mat-form-field [style.grid-column]="'1'">
+                                        <mat-label>Civility</mat-label>
+                                        <mat-select formControlName="civility">
+                                            @for (civility of listOfCivilities; track $index) {
+                                            <mat-option value="{{civility}}">{{civility}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field [style.grid-column]="'2'">
+                                        <mat-label>Nationalité</mat-label>
+                                        <mat-select formControlName="nationality">
+                                            @for (nationalities of listOfCountries; track $index) {
+                                            <mat-option value="{{nationalities}}">{{nationalities}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field [style.display]="'block'">
+                                        <mat-label>Pays de résidence</mat-label>
+                                        <mat-select formControlName="residentCountry">
+                                            @for (residence of listOfCountries; track $index) {
+                                            <mat-option value="{{residence}}">{{residence}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field [style.display]="'block'">
+                                        <mat-label>Ville de résidence</mat-label>
+                                        <mat-select formControlName="residentCity">
+                                            @for (city of listOfCities; track $index) {
+                                            <mat-option value="{{city}}">{{city}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field [style.grid-column]="'1 / 3'">
+                                        <mat-label>Adresse</mat-label>
+                                        <textarea formControlName="address" matInput></textarea>
+                                    </mat-form-field>
+
+                                    <mat-form-field [style.grid-column]="'1'">
+                                        <mat-label>Date de naissance</mat-label>
+                                        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                                        <mat-hint>MM/DD/YYYY</mat-hint>
+                                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+
+                                    <mat-form-field [style.grid-column]="'2'">
+                                        <mat-label>Système d'étude</mat-label>
+                                        <mat-select formControlName="educationSystem">
+                                            @for (system of listOfEducationSystems; track $index) {
+                                            <mat-option value="{{system}}">{{system}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field [style.grid-column]="'1 / 3'">
+                                        <mat-label>Niveau d'études</mat-label>
+                                        <mat-select formControlName="educationLevel">
+                                            @for (level of listOfEducationLevels; track $index) {
+                                            <mat-option value="{{level}}">{{level}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <button mat-stroked-button matStepperNext color="primary" [style.width]="'100%'"
+                                    [style.margin-top]="'24px'" [disabled]="!form.get('step1')?.valid">Next</button>
+                            </mat-step>
+
+                            <mat-step label="Step 2">
+                                <div class="grid-container">
+                                    @if (form.get('step1')?.get('nationality')?.value == 'Morocco') {
+                                        <mat-form-field>
+                                            <mat-label>Cin</mat-label>
+                                            <input matInput placeholder="2ABDS" formControlName="cin">
+                                        </mat-form-field>
+                                    }@else{
+                                        <mat-form-field>
+                                            <mat-label>Passport Number</mat-label>
+                                            <input matInput placeholder="2ABDS" formControlName="passportNumber">
+                                        </mat-form-field>
+                                    }
+
+                                    @if(form.get('step1')?.get('educationSystem')?.value == "Etranger"){
+                                    <mat-form-field [style.display]="'block'">
+                                        <mat-label>Pays du système d'étude</mat-label>
+                                        <mat-select formControlName="educationSystemCountry">
+                                            @for (country of listOfCountries; track $index) {
+                                            <mat-option value="{{country}}">{{country}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                    }
+
+                                    @if(form.get('step1')?.get('nationality')?.value == "Morocco"){
+                                    <mat-form-field>
+                                        <mat-label>Massar</mat-label>
+                                        <input matInput placeholder="2ABDS" formControlName="massarCode">
+                                    </mat-form-field>
+                                    }
+
+                                    @if(form.get('step1')?.get('educationLevel')?.value == "Bac obtenu"){
+                                        <mat-form-field>
+                                            <mat-label>Année d'obtention du Bac</mat-label>
+                                            <mat-select formControlName="bacYear">
+                                                @for (year of listOfBacYears; track $index) {
+                                                <mat-option value="{{year}}">{{year}}</mat-option>
+                                                }
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <mat-form-field>
+                                            <mat-label>Moyenne générale du Bac</mat-label>
+                                            <input matInput formControlName="bacAverageGrade" type="number" max="20"
+                                                min="0">
+                                        </mat-form-field>
+                                    }
+
+                                    @if(form.get('step1')?.get('educationSystem')?.value == 'Marocain'){
+                                    <mat-form-field>
+                                        <mat-label>Moyenne du contrôle continu</mat-label>
+                                        <input matInput formControlName="finalYearGrade" type="number" max="20" min="0">
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <mat-label>Moyenne de l’examen Régional</mat-label>
+                                        <input matInput formControlName="regionalExamNote" type="number" max="20"
+                                            min="0">
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <mat-label>Moyenne de l’examen National</mat-label>
+                                        <input matInput formControlName="nationalExamNote" type="number" max="20"
+                                            min="0">
+                                    </mat-form-field>
+                                    }
+
+                                    <mat-form-field>
+                                        <mat-label>Série</mat-label>
+                                        <mat-select formControlName="serie">
+                                            @for (serie of listOfSeries; track $index) {
+                                            <mat-option value="{{serie}}">{{serie}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <mat-label>Option</mat-label>
+                                        <mat-select formControlName="option">
+                                            @for (option of listOfOptions; track $index) {
+                                            <mat-option value="{{option}}">{{option}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    @if(form.get('step1')?.get('educationSystem')?.value != "Marocain"){
+                                    <mat-form-field>
+                                        <mat-label>Pays du système d'étude</mat-label>
+                                        <mat-select formControlName="educationSystemCountry">
+                                            @for (country of listOfCountries; track $index) {
+                                            <mat-option value="{{country}}">{{country}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                    }
+
+                                    <mat-form-field>
+                                        <mat-label>Type d'établissement</mat-label>
+                                        <mat-select formControlName="institutionType">
+                                            @for (type of listOfInstitutionTypes; track $index) {
+                                            <mat-option value="{{type}}">{{type}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <mat-label>Nom de votre établissement</mat-label>
+                                        <input matInput placeholder="2ABDS" formControlName="institutionName">
+                                    </mat-form-field>
+                                </div>
+
+                                <button #loginbtn mat-flat-button color="primary" [style.width]="'100%'" type="button"
+                                    (click)="onNext()">Suivant</button>
+                                <p style="margin-top: 16px;">Vous avez un compte ?<a routerLink="/login">Connexion</a>
+                                </p>
+                            </mat-step>
+                        </mat-stepper>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

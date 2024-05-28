@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Faculty, faculties } from '../../models/faculty';
 import { Exam, ExamType } from '../../models/exam';
 import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
-import { UserService } from '../../services/UserService';
+import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 import { UserExam } from '../../models/userExam';
@@ -17,7 +17,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 })
 export class ProgramsComponent implements OnInit {
   faculties: Faculty[];
-  constructor(private userService:UserService, @Inject(DOCUMENT) private doc:Document){
+  constructor(private userService:UserService){
     this.faculties = faculties; 
   }
 

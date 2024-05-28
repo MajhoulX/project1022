@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, ElementRef, Renderer2, ViewChild, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { FormControl, FormControlStatus, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { LoginCredential } from '../../models/loginCredential';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { UserService } from '../../services/user.service';
+import { LoginCredential } from './login.model';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,9 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 export class LoginComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(3)]);
+
+  authService = inject(UserService);
+  router = inject(Router);
 
   emailErrorMessage: string = '';
   passwordErrorMessage: string = '';
@@ -68,22 +72,11 @@ export class LoginComponent {
     cred.email = this.email.value!;
     cred.password = this.password.value!;
     
-    this.http.post<any>("http://localhost:5213/api/auth", {
-      email: this.email.value!,
-      password: this.password.value!
-    }).subscribe(
-      {
-        error(err) {
-          console.error("err");
-        },
-        complete() {
-          const enc = btoa(`${cred.email}:${cred.password}`);
-          localStorage.setItem("user_cred", enc);
-          console.log("broski");
-        }
+    this.authService.login(cred).subscribe({
+      next: (user) =>{
+        console.log(user);
+        this.router.navigate(['/step1']);
       }
-    )
-
-    console.log("bruh");
+    });
   }
 } 

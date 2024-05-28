@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Stage, stages } from '../../models/stage';
-import { UserService } from '../../services/UserService';
 import { Exam } from '../../models/exam';
 import { User } from '../../models/user';
 import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,15 +16,15 @@ export class DashboardComponent implements OnInit {
   stages: Stage[] = stages;
   user: User | null = null;
   sessions: Exam[] = [];
-
-  constructor(private userService: UserService) {
-
-  }
+  userService = inject(UserService);
 
   ngOnInit(): void {
-    this.userService.getUserFromAPI().subscribe(user => {
-      this.user = user;
-      this.sessions = user.examsRegistered.map(ex => ex.exam);
-    })
+    this.userService.user
+      .subscribe(user => {
+        if(user){
+          this.user = user;
+          this.sessions = user.examsRegistered.map(ex => ex.exam);
+        }
+      })
   }
 }

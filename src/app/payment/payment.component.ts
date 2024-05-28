@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Payment } from '../../models/payment';
-import { UserService } from '../../services/UserService';
+import { UserService } from '../../services/user.service';
 import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
 import {MatCardModule} from '@angular/material/card';
 

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Stage, stages } from '../../models/stage';
 import { CommonModule } from '@angular/common';
 import { User } from '../../models/user';
-import { UserService } from '../../services/UserService';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-curriculum',
@@ -14,14 +14,12 @@ import { UserService } from '../../services/UserService';
 export class CurriculumComponent implements OnInit {
   stages: Stage[] = stages;
   user: User | null = null;
-
-  constructor(private userService: UserService) {
-  }
+  userService = inject(UserService);
 
   ngOnInit(): void {
-    this.userService.getUserFromAPI()
-      .subscribe(user => {
-        this.user = user;
-      })
+    this.userService.user
+      .subscribe(u => {
+        this.user = u;
+      });
   }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { UserService } from '../../services/UserService';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-payment-balance',
@@ -11,17 +11,18 @@ import { UserService } from '../../services/UserService';
 })
 export class PaymentBalanceComponent implements OnInit {
   amount: number = 0;
-  constructor(private userService: UserService) {
-  }
+  userService = inject(UserService);
 
   ngOnInit(): void {
     let sum: number = 0;
-    this.userService.getUserFromAPI()
+    this.userService.user
       .subscribe(user => {
-        user.payments.forEach(p => {
-          sum += p.amount;
-        });
-        this.amount = sum;
+        if(user){
+          user.payments.forEach(p => {
+            sum += p.amount;
+          });
+          this.amount = sum;
+        }
       })
   }
 }

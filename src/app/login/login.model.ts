@@ -1,4 +1,4 @@
-export class SignupCredential {
+export class LoginCredential {
     email: string = '';
     password: string = '';
 }

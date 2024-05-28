@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../../services/UserService';
 import { MatCardModule } from '@angular/material/card';
 import { PaymentBalanceComponent } from "../payment-balance/payment-balance.component";
-import { error } from 'console';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 
 
@@ -17,26 +16,24 @@ import { error } from 'console';
 })
 export class ProfileComponent implements OnInit {
   private _user: User | null = null;
+  userService = inject(UserService);
 
   email: string = "";
   firstName: string = "";
   lastName: string = "";
   phone: string = "";
 
-  constructor(private userService: UserService) {
-  }
-
   ngOnInit(): void {
     this.populateData();
   }
 
   populateData(): void {
-    this.userService.getUserFromAPI()
+    this.userService.user
       .subscribe(user => {
-        this.email = user.email;
-        this.firstName = user.firstName;
-        this.lastName = user.lastName;
-        this.phone = user.phone;
+        this.email = user!.email;
+        this.firstName = user!.firstName;
+        this.lastName = user!.lastName;
+        this.phone = user!.phone;
         this._user = user;
       });
   }

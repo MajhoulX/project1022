@@ -1,47 +1,50 @@
-<div class="wrapper">
-        <div class="container main">
-            <div class="row">
-                <div class="col-md-6 side-image">
-                    <div class="text">
-                        <p>Join the community of musicians <i>- Fanan</i></p>
-                    </div>
+<div id="wrapper">
+    <div class="container" style="height: 100%;">
+        <div style="display: flex; height: 100%; justify-content: center;">
+            <div class="row" id="inner-wrapper">
+                <div class="col-6" id="side-image">
+                    <p>Join the community of musicians <i>- Fanan</i></p>
                 </div>
 
-                <div class="col-md-6 right">
-                    <div class="input-box">
-                       <header>Créer Votre Compte</header>
-                       <form id="signupForm" method="POST">
-                           <div class="input-group">
-                                <div class="input-field col-xs-6">
-                                    <input type="text" class="input" id="name" name="name" required autocomplete="off">
-                                    <label for="user">Nom</label> 
-                                </div>
-                                <div class="input-field col-xs-6">
-                                    <input type="text" class="input" id="lname" name="lname" required autocomplete="off">
-                                    <label for="user">Prenom</label> 
-                                </div> 
-                            </div>
-                            <div class="input-field">
-                                <input type="text" class="input" id="email" name="email" required autocomplete="off">
-                                <label for="user">Email</label> 
-                            </div> 
-                            <div class="input-field">
-                                <input type="password" class="input" id="password" name="password" required>
-                                <label for="password">Mot de passe</label>
-                            </div> 
-                            <div class="input-field">
-                                <input type="password" class="input" id="cpassword" name="cpassword" required>
-                                <label for="cpassword">Confirmation de mot de passe</label>
-                            </div>
-                            <div class="input-field">
-                                <input type="submit" class="submit" value="Inscription">
-                            </div> 
-                       </form>
-                       <div class="signin">
-                           <span>Vous avez un compte ? <a routerLink="/login">Connexion</a></span>
-                       </div>
-                    </div>  
+                <div class="col-6" id="form-wrapper">
+                    <p>Créer Votre Compte</p>
+                    <mat-form-field [style.display]="'block'">
+                        <mat-label>Nom</mat-label>
+                        <input matInput [formControl]="nom" (blur)="updateNomErrorMessage()" required>
+                        @if (nom.invalid) {
+                        <mat-error>{{nomErrorMessage}}</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field [style.display]="'block'">
+                        <mat-label>Prenom</mat-label>
+                        <input matInput [formControl]="prenom" (blur)="updatePrenomErrorMessage()" required>
+                        @if (prenom.invalid) {
+                        <mat-error>{{prenomErrorMessage}}</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field [style.display]="'block'">
+                        <mat-label>Email</mat-label>
+                        <input matInput [formControl]="email" (blur)="updateEmailErrorMessage()" required>
+                        @if (email.invalid) {
+                        <mat-error>{{emailErrorMessage}}</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field [style.display]="'block'">
+                        <mat-label>Password</mat-label>
+                        <input matInput [formControl]="password" (blur)="updatePasswordErrorMessage()" required>
+                        @if (password.invalid) {
+                        <mat-error>{{passwordErrorMessage}}</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <button #loginbtn mat-flat-button [disabled]=!canSignup color="primary" [style.width]="'100%'"
+                        (click)="onSignup()">Signup</button>
+                    <p style="margin-top: 16px;">Vous avez un compte ?<a routerLink="/login">Connexion</a></p>
                 </div>
             </div>
         </div>
     </div>
+</div>
