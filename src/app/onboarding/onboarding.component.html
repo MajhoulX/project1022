@@ -88,15 +88,15 @@
                             <mat-step label="Step 2">
                                 <div class="grid-container">
                                     @if (form.get('step1')?.get('nationality')?.value == 'Morocco') {
-                                        <mat-form-field>
-                                            <mat-label>Cin</mat-label>
-                                            <input matInput placeholder="2ABDS" formControlName="cin">
-                                        </mat-form-field>
+                                    <mat-form-field>
+                                        <mat-label>Cin</mat-label>
+                                        <input matInput placeholder="2ABDS" formControlName="cin">
+                                    </mat-form-field>
                                     }@else{
-                                        <mat-form-field>
-                                            <mat-label>Passport Number</mat-label>
-                                            <input matInput placeholder="2ABDS" formControlName="passportNumber">
-                                        </mat-form-field>
+                                    <mat-form-field>
+                                        <mat-label>Passport Number</mat-label>
+                                        <input matInput placeholder="2ABDS" formControlName="passportNumber">
+                                    </mat-form-field>
                                     }
 
                                     @if(form.get('step1')?.get('educationSystem')?.value == "Etranger"){
@@ -118,19 +118,19 @@
                                     }
 
                                     @if(form.get('step1')?.get('educationLevel')?.value == "Bac obtenu"){
-                                        <mat-form-field>
-                                            <mat-label>Année d'obtention du Bac</mat-label>
-                                            <mat-select formControlName="bacYear">
-                                                @for (year of listOfBacYears; track $index) {
-                                                <mat-option value="{{year}}">{{year}}</mat-option>
-                                                }
-                                            </mat-select>
-                                        </mat-form-field>
-                                        <mat-form-field>
-                                            <mat-label>Moyenne générale du Bac</mat-label>
-                                            <input matInput formControlName="bacAverageGrade" type="number" max="20"
-                                                min="0">
-                                        </mat-form-field>
+                                    <mat-form-field>
+                                        <mat-label>Année d'obtention du Bac</mat-label>
+                                        <mat-select formControlName="bacYear">
+                                            @for (year of listOfBacYears; track $index) {
+                                            <mat-option value="{{year}}">{{year}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <mat-label>Moyenne générale du Bac</mat-label>
+                                        <input matInput formControlName="bacAverageGrade" type="number" max="20"
+                                            min="0">
+                                    </mat-form-field>
                                     }
 
                                     @if(form.get('step1')?.get('educationSystem')?.value == 'Marocain'){
@@ -197,7 +197,7 @@
                                 </div>
 
                                 <button #loginbtn mat-flat-button color="primary" [style.width]="'100%'" type="button"
-                                    (click)="onNext()">Suivant</button>
+                                    [disabled]="!canSubmit" (click)="onNext()">Suivant</button>
                                 <p style="margin-top: 16px;">Vous avez un compte ?<a routerLink="/login">Connexion</a>
                                 </p>
                             </mat-step>
