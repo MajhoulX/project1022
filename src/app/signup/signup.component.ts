@@ -68,9 +68,9 @@ export class SignupComponent {
 
   updateEmailErrorMessage() {
     if (this.email.hasError('required')) {
-      this.emailErrorMessage = 'You must enter a value';
+      this.emailErrorMessage = 'Veuillez saisir une valeur';
     } else if (this.email.hasError('email')) {
-      this.emailErrorMessage = 'Not a valid email';
+      this.emailErrorMessage = 'Email non valide';
     } else {
       this.emailErrorMessage = '';
     }
@@ -80,9 +80,9 @@ export class SignupComponent {
 
   updatePasswordErrorMessage() {
     if (this.password.hasError('required')) {
-      this.passwordErrorMessage = 'You must enter a value';
+      this.passwordErrorMessage = 'Veuillez saisir une valeur';
     } else if (this.password.hasError('min')) {
-      this.passwordErrorMessage = 'Password too short';
+      this.passwordErrorMessage = 'Mot de passe trop court';
     } else {
       this.passwordErrorMessage = '';
     }
@@ -92,11 +92,11 @@ export class SignupComponent {
 
   updatePrenomErrorMessage() {
     if (this.prenom.hasError('required')) {
-      this.prenomErrorMessage = 'You must enter a prenom';
+      this.prenomErrorMessage = 'Veuillez saisir une valeur';
     } else if (this.prenom.hasError('min')) {
-      this.prenomErrorMessage = 'Password too short';
+      this.prenomErrorMessage = 'Prenom trop court';
     } else if (this.prenom.hasError('requiredPattern')) {
-      this.prenomErrorMessage = "Prenom should only contain letters";
+      this.prenomErrorMessage = "Prenom ne doit contenir que des lettres";
     }
     else {
       this.prenomErrorMessage = '';
@@ -109,9 +109,9 @@ export class SignupComponent {
     if (this.nom.hasError('required')) {
       this.nomErrorMessage = 'You must enter a nom';
     } else if (this.nom.hasError('min')) {
-      this.nomErrorMessage = 'Password too short';
+      this.nomErrorMessage = 'Nom trop court';
     } else if (this.prenom.hasError('requiredPattern')) {
-      this.nomErrorMessage = "Nom should only contain letters";
+      this.nomErrorMessage = "Nom ne doit contenir que des lettres";
     }
     else {
       this.nomErrorMessage = '';

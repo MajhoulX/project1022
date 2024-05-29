@@ -1,5 +1,8 @@
+$rad: 16px;
+
 #wrapper {
-    background-image: url('../../assets/yes.jpg');
+    // background-image: url('../../assets/yes.jpg');
+    background-color:#d1e3ec ;
     background-size: cover;
     height: 100vh;
 }
@@ -8,14 +11,16 @@
     align-self: center;
     background-color: aliceblue;
     min-height: 50%;
+    border-radius: $rad;
 }
 
 #side-image {
-    background-image: url('../../assets/jsp.jpg');
+    background-image: url('../../assets/bg3.jpg');
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: $rad 0 0 $rad;
 }
 
 #form-wrapper {

@@ -3,45 +3,48 @@
         <div style="display: flex; height: 100%; justify-content: center;">
             <div class="row" id="inner-wrapper">
                 <div class="col-6" id="side-image">
-                    <p>Join the community of musicians <i>- Fanan</i></p>
+                    <p style="visibility: hidden;">Join the community of musicians <i>- Fanan</i></p>
                 </div>
 
                 <div class="col-6" id="form-wrapper">
                     <p>Créer Votre Compte</p>
-                    <mat-form-field [style.display]="'block'">
-                        <mat-label>Nom</mat-label>
-                        <input matInput [formControl]="nom" (blur)="updateNomErrorMessage()" required>
-                        @if (nom.invalid) {
-                        <mat-error>{{nomErrorMessage}}</mat-error>
-                        }
-                    </mat-form-field>
+                    <div style="display: grid; grid-template-rows: 1f 1f 1f; grid-template-columns: 1f 1f; column-gap: 8px;">
 
-                    <mat-form-field [style.display]="'block'">
-                        <mat-label>Prenom</mat-label>
-                        <input matInput [formControl]="prenom" (blur)="updatePrenomErrorMessage()" required>
-                        @if (prenom.invalid) {
-                        <mat-error>{{prenomErrorMessage}}</mat-error>
-                        }
-                    </mat-form-field>
+                        <mat-form-field [style.grid-column]="'1'">
+                            <mat-label>Nom</mat-label>
+                            <input matInput [formControl]="nom" (blur)="updateNomErrorMessage()" required>
+                            @if (nom.invalid) {
+                            <mat-error>{{nomErrorMessage}}</mat-error>
+                            }
+                        </mat-form-field>
 
-                    <mat-form-field [style.display]="'block'">
-                        <mat-label>Email</mat-label>
-                        <input matInput [formControl]="email" (blur)="updateEmailErrorMessage()" required>
-                        @if (email.invalid) {
-                        <mat-error>{{emailErrorMessage}}</mat-error>
-                        }
-                    </mat-form-field>
+                        <mat-form-field [style.grid-column]="'2'">
+                            <mat-label>Prenom</mat-label>
+                            <input matInput [formControl]="prenom" (blur)="updatePrenomErrorMessage()" required>
+                            @if (prenom.invalid) {
+                            <mat-error>{{prenomErrorMessage}}</mat-error>
+                            }
+                        </mat-form-field>
 
-                    <mat-form-field [style.display]="'block'">
-                        <mat-label>Password</mat-label>
-                        <input matInput [formControl]="password" (blur)="updatePasswordErrorMessage()" required>
-                        @if (password.invalid) {
-                        <mat-error>{{passwordErrorMessage}}</mat-error>
-                        }
-                    </mat-form-field>
+                        <mat-form-field [style.grid-column]="'1/3'">
+                            <mat-label>Email</mat-label>
+                            <input matInput [formControl]="email" (blur)="updateEmailErrorMessage()" required>
+                            @if (email.invalid) {
+                            <mat-error>{{emailErrorMessage}}</mat-error>
+                            }
+                        </mat-form-field>
+
+                        <mat-form-field [style.grid-column]="'1/3'">
+                            <mat-label>Mot de passe</mat-label>
+                            <input matInput [formControl]="password" (blur)="updatePasswordErrorMessage()" required>
+                            @if (password.invalid) {
+                            <mat-error>{{passwordErrorMessage}}</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
 
                     <button #loginbtn mat-flat-button [disabled]=!canSignup color="primary" [style.width]="'100%'"
-                        (click)="onSignup()">Signup</button>
+                        (click)="onSignup()">S'inscrire</button>
                     <p style="margin-top: 16px;">Vous avez un compte ?<a routerLink="/login">Connexion</a></p>
                 </div>
             </div>

@@ -33,6 +33,7 @@ export class User {
     nationalExamScore: number | null = null;
     password: string | null = null;
     joined: Date = new Date();
+    completedOnboarding: boolean = false;
     birthDate: Date | null = null;
     examsRegistered: UserExam[] = [];
     payments: Payment[] = [];

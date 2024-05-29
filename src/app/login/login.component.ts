@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Renderer2, ViewChild, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButton, MatButtonModule } from '@angular/material/button';
-import { FormControl, FormControlStatus, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { LoginCredential } from './login.model';
 
@@ -71,11 +71,14 @@ export class LoginComponent {
     const cred = new LoginCredential();
     cred.email = this.email.value!;
     cred.password = this.password.value!;
-    
+
     this.authService.login(cred).subscribe({
-      next: (user) =>{
-        console.log(user);
+      next: (user) => {
+        this.canLogin = false;
         this.router.navigate(['/step1']);
+      },
+      error: (err) => {
+        this.canLogin = true;
       }
     });
   }

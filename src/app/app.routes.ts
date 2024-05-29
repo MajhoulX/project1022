@@ -11,15 +11,16 @@ import { ChoiceComponent } from './choice/choice.component';
 import { PortalLayoutComponent as PortalLayoutComponent } from './portal-layout/portal-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OnboardingComponent } from './onboarding/onboarding.component';
+import { authGuard } from '../guards/auth.guard';
 
 export const routes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'onboarding', component: OnboardingComponent },
+    { path: 'onboarding', component: OnboardingComponent, canActivate: [authGuard] },
     {
         path: 'portal',
         component: PortalLayoutComponent,
-        // canActivate: [authGuard],
+        canActivate: [authGuard],
         children: [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'choix', component: ChoiceComponent },

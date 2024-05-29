@@ -6,14 +6,17 @@ import { Observable, map, take } from 'rxjs';
 export const authGuard: CanActivateFn = (route, state): Observable<boolean | UrlTree> => {
   const usrSrv = inject(UserService);
   const router = inject(Router);
-  console.log("trying to access portal");
+
   return usrSrv.user.pipe(take(1), map((user) => {
-    if (user) {
-      console.log("portal accessed");
-      return true;
-    } else {
-      console.log("portal denied");
+    if (!user) {
       return router.createUrlTree(["/login"]);
+    }
+
+    if (route.url[0].path == 'onboarding') {
+      return user.completedOnboarding ? router.createUrlTree(["/dashboard"]) : true;
+    }
+    else {
+      return user.completedOnboarding ? true : router.createUrlTree(["/onboarding"]);
     }
   }));
 };

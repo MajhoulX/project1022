@@ -1,9 +1,10 @@
 import { Injectable, inject } from "@angular/core";
 import { User } from "../models/user";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { BehaviorSubject, Observable, Subject, catchError, of, tap, throwError } from "rxjs";
 import { SignupCredential } from "../app/signup/signup.model";
 import { LoginCredential } from "../app/login/login.model";
+import { Onboarding } from "../app/onboarding/onboarding.model";
 
 @Injectable({
     providedIn: 'root'
@@ -30,7 +31,21 @@ export class UserService {
         return this.http.post<User>(this.authEndpoint + "/signup", cred).pipe(
             catchError((err) => {
                 const e = err.error.error;
-                console.log(e);
+                return throwError(() => e);
+            }),
+            tap({
+                next: (user) => {
+                    this.user.next(user);
+                }
+            })
+        );
+    }
+
+    onboard(onboard: Onboarding) {
+        return this.http.post<User>(this.userEndpoint + "/onboarding", onboard).pipe(
+            catchError((err) => {
+                console.error(err);
+                const e = err.error.error;
                 return throwError(() => e);
             }),
             tap({
@@ -51,10 +66,7 @@ export class UserService {
 
     updateUserInAPI(user: User): Observable<any> {
         return this.http.post<any>(this.userEndpoint + '/1', user, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Basic " + btoa("sul@muk.com:sulsul")
-            },
+            
         });
     }
 }
