@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
   http = inject(HttpClient);
   stages: Stage[] = stages;
   user: User | null = null;
+  showEmailConfirm = true;
 
   sessions: Session[] = [];
 
@@ -41,6 +42,14 @@ export class DashboardComponent implements OnInit {
     this.http.get<Session[]>("https://localhost:7109/api/user/exam").subscribe({
       next: (sessions) => {
         this.sessions = sessions;
+      }
+    })
+  }
+
+  sendEmailToken(){
+    this.http.get<Session[]>("https://localhost:7109/api/auth/confirmation/request").subscribe({
+      next: (sessions) => {
+        this.showEmailConfirm = false;
       }
     })
   }

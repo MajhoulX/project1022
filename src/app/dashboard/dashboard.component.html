@@ -1,9 +1,11 @@
 <div class="">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Veuillez valider votre adresse e-mail en cliquant sur <a href="#">ce lien</a>. Un mail de vérification vous sera
-        envoyé
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    @if(!user?.hasConfirmedEmail && showEmailConfirm){
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Veuillez valider votre adresse e-mail en cliquant sur <button (click)="sendEmailToken()">ce lien</button>. Un mail de vérification vous sera
+            envoyé
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
 
     <div class="row">
         <div class="col-6 mb-4">

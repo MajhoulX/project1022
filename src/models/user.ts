@@ -32,6 +32,7 @@ export class User {
     regionalExamScore: number | null = null;
     nationalExamScore: number | null = null;
     password: string | null = null;
+    hasConfirmedEmail: boolean = false;
     joined: Date = new Date();
     completedOnboarding: boolean = false;
     birthDate: Date | null = null;
@@ -48,10 +49,10 @@ export class Serie {
     }
 };
 
-export class EducationSystem{
+export class EducationSystem {
     name: string;
     series: Serie[];
-    constructor(name:string, series: Serie[]){
+    constructor(name: string, series: Serie[]) {
         this.name = name;
         this.series = series;
     }
@@ -86,7 +87,7 @@ export const educationSystems: EducationSystem[] = [
         ])
     ]),
     new EducationSystem("Mission (Française)", [
-        new Serie("Général",[
+        new Serie("Général", [
             "Sciences économiques et sociales, Mathématiques",
             "Physique-Chimie, Sciences de la vie et de la terre",
             "Arts, Arts plastiques et Mathématiques",
