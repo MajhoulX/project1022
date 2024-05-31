@@ -2,33 +2,35 @@
     <h2 class="title">Liste des programmes</h2>
     @for (faculty of faculties; track $index){
     <div class="product-container">
-    <div class="product">
-        <h3 class="product-name">{{faculty.name}}</h3>
-        <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <p style=" padding-top:15px;">Programmes disponibles</p>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (studyField of faculty.fieldOfStudies; track $index) {
-                <div [style.border-color]="faculty.themeColor" style="border-width: 2px; border-style: solid; margin-bottom: 16px; padding: 16px;">
-                    <p [style.color]="faculty.themeColor" style="font-weight: bold; font-size: small;">{{studyField.name}}</p>
+        <div class="product">
+            <h3 class="product-name">{{faculty.name}}</h3>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <p style=" padding-top:15px;">Programmes disponibles</p>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                @for (studyField of faculty.fieldOfStudies; track $index) {
+                <div style="border-width: 2px; border-style: solid; margin-bottom: 16px; padding: 16px;">
+                    <p style="font-weight: bold; font-size: small;">
+                        {{studyField.name}}</p>
                     @for (institute of studyField.institutions; track $index) {
-                        <p style="margin: 0; font-size: smaller; font-weight: light;">{{institute}}</p>
+                    <p style="margin: 0; font-size: smaller; font-weight: light;">{{institute}}</p>
                     }
                     <select [id]="studyField.name" style="width: 100%; margin-top: 16px; text-align: center;" required>
                         <option value="" selected>Sessions</option>
                         @for (exam of studyField.exams; track $index) {
-                            <option value="{{exam.id}}">Concour du {{exam.date.toDateString()}}</option>
+                        <option [value]="exam.id">{{exam.name}}</option>
                         }
-                        
+
                     </select>
-                    <button style="width: 100%; margin-top: 8px;" type="button" (click)="addToRegisteredExams(studyField.name)">Choisir</button>
+                    <button style="width: 100%; margin-top: 8px;" type="button"
+                        (click)="addToRegisteredExams(studyField.name)">Choisir</button>
                 </div>
-            }
-          </mat-expansion-panel>
-    </div>
-</div>}
+                }
+            </mat-expansion-panel>
+        </div>
+    </div>}
 </div>
 
 

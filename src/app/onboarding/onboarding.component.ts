@@ -13,7 +13,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { Onboarding } from './onboarding.model';
-import { fromHtmlDate } from '../../utilities/utility';
 
 @Component({
   selector: 'app-onboarding',
@@ -203,30 +202,6 @@ export class OnboardingComponent {
     });
   }
 
-  updateUser(): void {
-    //   const user = new User();
-    //   user.address = this.address.value!;
-    //   user.nationality = this.nationality.value!;
-    //   user.educationSystem = this.educationSystem.value!;
-    //   user.educationLevel = this.educationLevel.value!;
-    //   user.civility = this.civility.value!;
-    //   user.birthDate = fromHtmlDate(this.birthDate.value!)!;
-    //   user.residentCountry = this.residentCountry.value!;
-    //   user.residentState = this.city.value!;
-
-    //   if (this.nationality.value == "Morocco") {
-    //     user.cin = this.cin.value!;
-    //   } else {
-    //     user.passportNumber = this.passportNumber.value!;
-    //   }
-
-    //   if (this.educationSystem.value == "Etranger") {
-    //     user.educationSystemCountry = this.educationSystemCountry.value!;
-    //   }
-
-    //   this.userService.updateLocalUser(user);
-  }
-
   onNext() {
     let onboarding = new Onboarding();
     onboarding.civility = this.form.controls.step1.controls.civility.value!;
@@ -255,7 +230,7 @@ export class OnboardingComponent {
     console.log(onboarding);
     this.userService.onboard(onboarding).subscribe({
       next: user => {
-        console.log(user);
+        this.router.navigate(['/dashboard']);
       },
       error: err => {
         console.log(err);

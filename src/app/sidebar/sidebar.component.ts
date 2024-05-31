@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { NavlinkComponent } from '../navlink/navlink.component';
 import { RouterLinkActive } from '@angular/router';
 import { Link, Links } from '../../models/link';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,6 +13,7 @@ import { Link, Links } from '../../models/link';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  private userService = inject(UserService);
   private _isVisible:boolean = true;
   get isVisible(): boolean{
     return this._isVisible;
@@ -43,6 +45,10 @@ export class SidebarComponent {
 
   toggle(){
     this._isVisible = !this.isVisible;
+  }
+
+  logout(){
+    this.userService.logout();
   }
 }
 

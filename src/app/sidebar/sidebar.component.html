@@ -1,20 +1,24 @@
-<div id="sidebar" [style.display]="isVisible ? 'block' : 'none'">
-    <div id="sidebar-title">
-        <img src="https://candidature.uir.ac.ma/images/logo-uir.png" alt="" logo>
-    </div>
-    <div id="tabs">
-        <app-navlink [link]="dashboardLink" id="dashboardLink"></app-navlink>
+<div id="sidebar" [style.display]="isVisible ? 'flex' : 'none'">
+    <div>
+        <div id="sidebar-title">
+            <img src="https://candidature.uir.ac.ma/images/logo-uir.png" alt="" logo>
+        </div>
+        <div id="tabs">
+            <app-navlink [link]="dashboardLink" id="dashboardLink"></app-navlink>
 
-        @for (group of linkGroup; track $index) {
-        <p nav-header>{{group.title}}</p>
-        <ul>
-            @for (link of group.links; track $index) {
-            <li>
-                <app-navlink [link]="link">
-                </app-navlink>
-            </li>
+            @for (group of linkGroup; track $index) {
+            <p nav-header>{{group.title}}</p>
+            <ul>
+                @for (link of group.links; track $index) {
+                <li>
+                    <app-navlink [link]="link">
+                    </app-navlink>
+                </li>
+                }
+            </ul>
             }
-        </ul>
-        }
+        </div>
     </div>
+
+    <button style="" (click)="logout()">Log out</button>
 </div>

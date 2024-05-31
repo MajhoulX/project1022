@@ -6,7 +6,7 @@ export class User {
     firstName: string = "";
     lastName: string = "";
     civility: string = "";
-    phone: string = "";
+    phoneNumber: string = "";
     email: string = "";
     cin: string = "";
     passportNumber: string = "";

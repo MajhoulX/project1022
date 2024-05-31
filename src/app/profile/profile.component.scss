@@ -29,9 +29,10 @@
 // }
 
 .formStyle {
-    display: block;
-    flex-wrap: wrap;
-     
+    display: grid;
+    grid-template-columns: 1f 1f;
+    grid-template-rows: 1f 1f 1f;
+    column-gap: 8px;
 }
 
 

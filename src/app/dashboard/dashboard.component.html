@@ -5,32 +5,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
-    <div class="row mb-2">
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-success">Cursus</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-success">Choix</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-warning">Convocation</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-block btn-warning">Admission</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-block btn-warning">Préinscription</button>
-        </div>
-        <div class="col mb-2">
-            <button class="btn btn-lg btn-wider btn-block btn-warning">Inscription</button>
-        </div>
-    </div>
-
     <div class="row">
-        <div class="col-md-12 mb-4">
-            <img src="https://candidature.uir.ac.ma/images/slider.jpg" alt="" style="width: 100%;">
-        </div>
-        <div class="col-md-12 mb-4">
+        <div class="col-6 mb-4">
             <div class="frame">
                 <div class="d-flex justify-content-center">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
@@ -38,23 +14,23 @@
                 </div>
                 <p style="text-transform: uppercase; text-align: center; margin-top: 32px; margin-bottom: 0;">
                     {{user?.civility}}. {{user?.firstName}} {{user?.lastName}}</p>
-                <p style="color: dodgerblue; text-align: center; margin: 0;">{{user?.id}}</p>
+                <p style="color: dodgerblue; text-align: center; margin: 0;">#{{user!.id}}</p>
                 <div class="d-flex justify-content-between">
                     <p>Création</p>
-                    <p>{{user?.joined?.toLocaleDateString}}</p>
+                    <p>{{user!.joined.toDateString}}</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <p>Téléphone</p>
-                    <p>{{user?.phone}}</p>
+                    <p>{{user?.phoneNumber}}</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <p>E-mail</p>
-                    <p>{{user?.email}}</p>
+                    <p>{{user!.email}}</p>
                 </div>
-                <a class="button" routerLink="/dashboard/profil"><span>Mon profil</span></a>
+                <a class="button" routerLink="/portal/profil"><span>Mon profil</span></a>
             </div>
         </div>
-        <div class="col-md-12 mb-4">
+        <div class="col-6 mb-4">
             <div class="frame">
                 @for (item of stages; track $index) {
                 <div class="d-flex justify-content-between py-2">
@@ -73,39 +49,42 @@
                 }
             </div>
         </div>
-        <div class="col-md-12 mb-4">
+        <div class="col-12 mb-4">
             <div class="frame" style="background-color: darkslateblue; color: white;">
                 <p>Choix de programmes</p>
                 <p>Faites votre choix à partir des programmes proposés par l'UIR.</p>
-                <button class="btn btn-secondary">Choisir</button>
+                <a class="btn btn-secondary" routerLink="/portal/programmes">Choisir</a>
             </div>
         </div>
-        <div class="col-md-12 mb-4">
+        <div class="col-12 mb-4">
             <div class="frame" style="background-color: darkslateblue; color: white;">
                 <p>Paiement des frais de concours</p>
                 <p>750 DH pour 2 sessions, 1.500 DH pour un nombre illimité</p>
-                <button class="btn btn-secondary">Recharger votre compte</button>
+                <a class="btn btn-secondary" routerLink="/portal/frais">Recharger votre compte</a>
             </div>
         </div>
-        <div class="col-md-12">
-            <p>Mes sessions</p>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Session</th>
-                        <th>Programme</th>
-                        <th>Etat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (session of sessions; track $index) {
-                        <tr>
-                            <td>{{session.id}}</td>
-                            <td>{{session.status}}</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+
+        <table mat-table [dataSource]="sessions">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Session</th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="program">
+                <th mat-header-cell *matHeaderCellDef>Programme</th>
+                <td mat-cell *matCellDef="let element">
+                    <p>{{element.fieldOfStudy}} </p>
+                    <p>{{element.faculty}} </p>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="state">
+                <th mat-header-cell *matHeaderCellDef>Etat</th>
+                <td mat-cell *matCellDef="let element"> {{element.examStatus}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        </table>
     </div>
 </div>
